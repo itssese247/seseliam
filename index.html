@@ -1,0 +1,1610 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&family=Noto+Serif+SC:wght@400;700&display=swap"
+  onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&family=Noto+Serif+SC:wght@400;700&display=swap"></noscript>
+<script>
+/* 先用本機讀得到的設定上色，避免畫面先閃一下淺色再變深色 */
+(function(){try{
+  var t=localStorage.getItem("sese_theme")||"auto";
+  var dark = t==="dark" || (t!=="light" && window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches);
+  document.documentElement.dataset.theme = dark?"dark":"light";
+  document.documentElement.dataset.read = localStorage.getItem("sese_read")||"m";
+}catch(e){}})();
+</script>
+<title>sese's</title>
+<style>
+/* 罕用字補丁：㬊 薫 潣 炅 這幾個字多數宋體都沒有，內嵌思源宋體的對應字形（SIL OFL） */
+@font-face{font-family:"SeseRare";font-style:normal;font-weight:400;font-display:swap;
+  src:url(data:font/woff2;base64,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) format("woff2");
+  unicode-range:U+3B0A,U+6F63,U+7085,U+85AB}
+@font-face{font-family:"SeseRare";font-style:normal;font-weight:700;font-display:swap;
+  src:url(data:font/woff2;base64,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) format("woff2");
+  unicode-range:U+3B0A,U+6F63,U+7085,U+85AB}
+:root{
+  --paper:#ffffff; --sky:#eef6fc; --sky-2:#dcecf8; --sky-3:#c6e0f2;
+  --line:#b7d7ee; --edge:#8ab8db; --ink:#2d4457; --soft:#7d9ab1; --shadow:#cfe4f4;
+  --deep:#173d63;
+  --serif-sc:"Times New Roman","SeseRare","Noto Serif SC","Songti SC","STSong","宋体",SimSun,"Source Han Serif SC",serif;
+  --serif:"Times New Roman","SeseRare","Noto Serif TC","Noto Serif SC","Songti TC","Songti SC","STSong","宋體","宋体",SimSun,"新細明體",PMingLiU,MingLiU,"Source Han Serif TC",serif;
+}
+*{box-sizing:border-box;font-family:inherit}
+html{scroll-behavior:auto;font-family:var(--serif)}
+body{margin:0;background:var(--sky);color:var(--ink);overflow-x:hidden;
+  font-family:var(--serif);font-size:17px;line-height:1.95;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+button,input,textarea,select{font-family:var(--serif);font-size:1rem;color:var(--ink)}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--edge);outline-offset:2px}
+
+/* 只有真的有滑鼠的裝置才套 hover；觸控裝置若套用，第一次點會被當成移入而沒反應 */
+@media (hover:hover) and (pointer:fine){
+  .px-btn:hover{background:var(--sky-2)}
+  .icon-btn:hover{background:var(--sky-2)}
+  .post-card:hover{box-shadow:2px 2px 0 var(--shadow);transform:translate(3px,3px)}
+  .cacts button:hover{color:var(--ink)}
+  :root[data-theme="dark"] .post-card:hover{background:#1a2c44}
+  .tag-bar button:hover{background:var(--sky-2)}
+  .toc li span:hover{color:var(--edge)}
+}
+/* 觸控：取消 300ms 延遲與點擊灰塊 */
+button,select,input,textarea,[data-go],[data-tag],[data-lang],[data-theme-btn],.post-card,.toc li span,summary{
+  touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.post-card:active{box-shadow:2px 2px 0 var(--shadow);transform:translate(3px,3px)}
+
+.px-box{background:var(--paper);border:2px solid var(--edge);box-shadow:5px 5px 0 var(--shadow)}
+.px-rule{height:6px;background-image:repeating-linear-gradient(90deg,var(--edge) 0 6px,transparent 6px 12px)}
+.px-btn{background:var(--paper);border:2px solid var(--edge);box-shadow:3px 3px 0 var(--shadow);padding:6px 14px;border-radius:0;
+  display:inline-flex;align-items:center;gap:7px}
+.ic{width:1.05em;height:1.05em;flex:none;stroke-width:2.1}
+.ic.fill{fill:var(--edge);stroke:none}
+
+.px-btn:active{transform:translate(3px,3px);box-shadow:0 0 0 var(--shadow)}
+.px-btn.is-on{background:var(--sky-3)}
+.px-btn.slim{padding:3px 10px;font-size:.82rem;box-shadow:2px 2px 0 var(--shadow)}
+input[type=text],input[type=password],input[type=url],textarea,select{
+  background:var(--paper);border:2px solid var(--line);border-radius:0;padding:8px 10px;width:100%}
+input:focus,textarea:focus,select:focus{border-color:var(--edge);outline:none}
+
+.topbar{position:sticky;top:0;z-index:40;background:rgba(238,246,252,.94);backdrop-filter:blur(4px);border-bottom:2px solid var(--line)}
+.topbar-in{max-width:1060px;margin:0 auto;padding:10px 24px;display:flex;gap:12px;align-items:center}
+.brand-mini{font-size:1.1rem;font-weight:bold;letter-spacing:.06em;white-space:nowrap}
+.search-wrap{flex:1;display:flex;gap:8px;align-items:center}
+.search-wrap input{padding:6px 10px}
+.icon-btn{background:var(--paper);border:2px solid var(--edge);box-shadow:3px 3px 0 var(--shadow);
+  padding:5px 9px;display:flex;align-items:center}
+
+.icon-btn:active{transform:translate(3px,3px);box-shadow:0 0 0 var(--shadow)}
+.icon-btn svg{width:17px;height:17px;stroke-width:2}
+
+.hero{max-width:1060px;margin:0 auto;padding:44px 24px 26px;text-align:center}
+.hero h1{font-size:clamp(2.1rem,6vw,3.1rem);line-height:1;margin:0;letter-spacing:.03em;font-weight:bold}
+.hero .sub{font-style:italic;font-size:.72rem;color:var(--soft);letter-spacing:.1em;margin-top:11px}
+.hero .px-rule{margin:22px auto 0;max-width:180px}
+
+.art{fill:none;stroke:var(--edge);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.art .sol{fill:var(--edge);stroke:none}
+.art .acc{stroke-width:1.5}
+.lang-pick{display:flex;justify-content:center;gap:8px;margin-top:18px}
+.lang-pick .px-btn{padding:4px 14px;font-size:.85rem}
+footer .lang-pick{margin-bottom:18px}
+.hero-art{display:flex;justify-content:center;align-items:flex-end;gap:30px;margin-top:20px}
+.hero-art svg{width:50px;height:50px}
+.corner-art{position:absolute;right:20px;top:18px;width:58px;height:58px}
+.sec-head svg{width:28px;height:28px;align-self:center}
+.divider-art{display:flex;align-items:center;gap:16px;margin:46px auto;max-width:760px}
+.divider-art .px-rule{flex:1}
+.divider-art svg{width:56px;height:40px;flex:none}
+.empty svg{width:64px;height:64px;margin:0 auto 12px}
+footer svg{width:46px;height:32px;margin:0 auto 8px}
+
+main{max-width:1060px;margin:0 auto;padding:0 24px 140px}
+.card{padding:32px 36px;margin-bottom:44px;position:relative}
+.card h2{font-size:1.5rem;margin:0 0 4px;letter-spacing:.08em}
+.notice ol{padding-left:1.4em;margin:18px 0 0}
+.notice li{margin-bottom:14px}
+.notice a{color:#3d7ba6}
+.sec-head{display:flex;align-items:baseline;gap:12px;margin:0 0 18px}
+.sec-head h2{font-size:1.25rem;margin:0;letter-spacing:.1em}
+.sec-head span{font-size:.8rem;color:var(--soft);font-style:italic}
+
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.post-card{cursor:pointer;background:var(--paper);border:2px solid var(--edge);box-shadow:5px 5px 0 var(--shadow)}
+
+.post-card .cover{aspect-ratio:16/9;overflow:hidden;border-bottom:2px solid var(--edge);background:var(--sky-2)}
+.post-card .cover img{width:100%;height:100%;object-fit:cover}
+.post-card .meta{padding:14px 16px 18px}
+.post-card .t{font-size:1.12rem;font-weight:bold;line-height:1.5}
+.post-card .s{font-size:.82rem;color:var(--soft);margin-top:6px;line-height:1.6}
+.empty{padding:40px;text-align:center;color:var(--soft);font-style:italic}
+[data-go]{cursor:pointer}
+
+.post-cover{width:100vw;max-width:100vw;margin-left:calc(50% - 50vw);height:340px;
+  border-bottom:2px solid var(--edge);overflow:hidden;background:var(--sky-2);margin-bottom:40px}
+.post-cover img{width:100%;height:100%;object-fit:cover}
+.post-head{text-align:center;margin-bottom:8px}
+.post-head h1{font-size:clamp(1.7rem,5vw,2.4rem);font-weight:bold;margin:0 0 10px;line-height:1.4}
+.post-head .slogan{font-weight:bold;font-size:.95rem;color:var(--soft);margin:0}
+.post-tools{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:22px 0 30px}
+.post-nav{max-width:760px;margin:36px auto 0;display:flex;justify-content:space-between;gap:12px}
+
+/* 內文與編輯器共用樣式 */
+.simp,body.simp{font-family:var(--serif-sc)}
+.rich{max-width:760px;margin:0 auto;text-align:left;overflow-wrap:break-word}
+.rich p{margin:0 0 1.2em;min-height:1em}
+.rich h2{font-size:1.2rem;letter-spacing:.06em;margin:1.8em 0 .7em;padding-left:12px;border-left:6px solid var(--sky-3)}
+.rich blockquote{margin:1.5em 0;padding:2px 0 2px 18px;border-left:4px solid var(--edge);color:var(--soft);font-style:italic}
+.rich .callout{margin:1.5em 0;padding:14px 18px;background:var(--sky);border:2px solid var(--line)}
+.rich .white{margin:1.5em 0;padding:14px 18px;background:var(--paper);border:2px solid var(--edge);color:var(--deep)}
+.rich .callout p:last-child,.rich .white p:last-child,.rich blockquote p:last-child{margin-bottom:0}
+.rich ul,.rich ol{padding-left:1.5em;margin:0 0 1.2em}
+
+.comments{max-width:760px;margin:56px auto 0}
+.comments h3{font-size:1.05rem;letter-spacing:.1em;margin:0 0 4px}
+.cmt-form{margin:18px 0 26px;display:grid;gap:10px}
+.cmt-form .row input{max-width:240px}
+.name-pick{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.name-pick select{width:auto;min-width:112px;padding:6px 8px}
+.name-pick span{font-size:.9rem;color:var(--soft)}
+.cmt-warn{border:2px solid #d8a3a3;background:#fdf4f4;padding:10px 12px;font-size:.86rem;color:#8a4b4b;display:none}
+.cmt-warn.on{display:block}
+.cmt{display:flex;gap:12px;border-top:2px dotted var(--line);padding:16px 2px}
+.cmt .avt{width:40px;height:40px;flex:none}
+.cmt .avt svg{width:100%;height:100%}
+.cbody{flex:1;min-width:0}
+.cmt .who{font-weight:bold;font-size:.94rem}
+.cmt .when{font-size:.72rem;color:var(--soft);margin-left:8px;font-style:italic}
+.cmt .what{margin:5px 0 0;white-space:pre-wrap;font-size:.95rem;overflow-wrap:anywhere}
+.cacts{display:flex;gap:14px;margin-top:7px}
+.cacts button{background:none;border:none;padding:0;font-size:.78rem;color:var(--soft);text-decoration:underline}
+
+.replies{margin-top:10px;padding-left:14px;border-left:2px dotted var(--line)}
+.replies .cmt{border-top:none;padding:10px 0}
+.inline-form{display:grid;gap:8px;margin-top:10px}
+.inline-form .row{display:flex;gap:8px;flex-wrap:wrap}
+
+#dock{position:fixed;right:18px;bottom:18px;z-index:60;width:min(340px,calc(100vw - 36px));display:none}
+#dock.on{display:block}
+#dock .bar{display:flex;align-items:center;gap:8px;padding:6px 8px;border-bottom:2px solid var(--edge);background:var(--sky-2)}
+#dock .bar b{font-size:.8rem;flex:1;letter-spacing:.06em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#dock .bar button{border:none;background:none;padding:3px 5px;display:flex;align-items:center}
+#dock .bar button svg{width:17px;height:17px;stroke-width:2.2}
+#dock .body{padding:8px}
+#dock.mini .body{display:none}
+#dock iframe{width:100%;aspect-ratio:16/9;border:0;display:block}
+#dock audio{width:100%}
+#dock .fb{font-size:.72rem;color:var(--soft);margin:6px 2px 0}
+#dock .fb a{color:var(--soft)}
+
+.admin-grid{display:grid;gap:18px}
+.label{font-size:.82rem;letter-spacing:.08em;color:var(--soft);margin-bottom:6px}
+.toolbar{display:flex;flex-wrap:wrap;gap:6px;padding:8px;border:2px solid var(--line);border-bottom:none;background:var(--sky)}
+#editor{border:2px solid var(--line);background:var(--paper);padding:18px 20px;min-height:280px;outline:none;max-width:none}
+#editor:focus{border-color:var(--edge)}
+.preview-16x9{aspect-ratio:16/9;border:2px solid var(--line);background:var(--sky);overflow:hidden}
+.preview-16x9 img{width:100%;height:100%;object-fit:cover}
+.hint{font-size:.78rem;color:var(--soft);line-height:1.7}
+.rowbtns{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.admin-list{list-style:none;padding:0;margin:0}
+.admin-list li{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:10px;
+  border-bottom:2px dotted var(--line);padding-bottom:10px}
+.admin-list .ttl{flex:1;min-width:140px;font-weight:bold}
+.draft-bar{background:var(--sky);border:2px solid var(--line);padding:8px 12px;font-size:.82rem;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+
+.modal{position:fixed;inset:0;background:rgba(45,68,87,.55);z-index:70;display:none;overflow:auto;padding:20px}
+.modal.on{display:block}
+.modal-in{max-width:860px;margin:0 auto;background:var(--paper);border:2px solid var(--edge);box-shadow:6px 6px 0 var(--shadow);padding-bottom:40px}
+.modal-bar{display:flex;justify-content:space-between;align-items:center;padding:10px 16px;border-bottom:2px solid var(--edge);background:var(--sky-2);position:sticky;top:0}
+.modal-cover{height:280px;overflow:hidden;background:var(--sky-2);border-bottom:2px solid var(--edge)}
+.modal-cover img{width:100%;height:100%;object-fit:cover}
+.modal-body{padding:28px 24px 0}
+
+footer{max-width:1060px;margin:0 auto;padding:0 24px 60px;text-align:center;font-size:.75rem;color:var(--soft);font-style:italic}
+.toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%);z-index:80;background:var(--paper);
+  border:2px solid var(--edge);box-shadow:4px 4px 0 var(--shadow);padding:10px 18px;font-size:.9rem;display:none;max-width:90vw}
+.toast.on{display:block}
+
+/* 深色：由 JS 決定 data-theme，所以手動切換與跟隨系統共用同一份樣式 */
+:root[data-theme="dark"]{
+  --paper:#152439; --sky:#0e1a2b; --sky-2:#1d3049; --sky-3:#27405d;
+  --line:#34536f; --edge:#7aa8cf; --ink:#e6eef7; --soft:#a2bbd1;
+  --shadow:#0a1322; --deep:#d8e8f8;
+}
+:root[data-theme="dark"] .topbar{background:rgba(14,26,43,.94)}
+:root[data-theme="dark"] .notice a{color:#8fc2e8}
+:root[data-theme="dark"] .cmt-warn{border-color:#7d4b4b;background:#2a1c1c;color:#e6b6b6}
+:root[data-theme="dark"] .modal{background:rgba(5,10,18,.7)}
+
+:root[data-theme="dark"] img{filter:brightness(.92)}
+
+/* 閱讀字級 */
+.rich{font-size:var(--read-size,1rem);line-height:var(--read-lh,1.95)}
+body[data-read="s"]{--read-size:.94rem;--read-lh:1.85}
+body[data-read="m"]{--read-size:1rem;--read-lh:1.95}
+body[data-read="l"]{--read-size:1.16rem;--read-lh:2.15}
+
+/* 標籤・狀態・字數 */
+.badge{display:inline-flex;align-items:center;gap:4px;border:2px solid var(--edge);background:var(--sky-2);
+  padding:1px 8px;font-size:.72rem;letter-spacing:.04em;white-space:nowrap}
+.badge.done{background:var(--paper)}
+.card-meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px;align-items:center}
+.card-meta .dim{font-size:.72rem;color:var(--soft);font-style:italic}
+.tag{border:2px solid var(--line);background:var(--paper);padding:1px 8px;font-size:.72rem;white-space:nowrap}
+.tag-bar{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px}
+.tag-bar button{border:2px solid var(--line);background:var(--paper);padding:3px 12px;font-size:.8rem;
+  box-shadow:2px 2px 0 var(--shadow)}
+.tag-bar button.is-on{background:var(--sky-3);border-color:var(--edge)}
+.post-meta{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin:14px 0 0;align-items:center}
+
+/* 章節目錄 */
+.toc{max-width:760px;margin:26px auto 0;border:2px solid var(--line);background:var(--paper)}
+.toc summary{padding:10px 16px;cursor:pointer;font-size:.9rem;letter-spacing:.06em;background:var(--sky)}
+.toc ol{margin:0;padding:12px 16px 16px 34px}
+.toc li{margin-bottom:6px;font-size:.9rem}
+.toc li.now{font-weight:bold}
+.toc li span{cursor:pointer;text-decoration:underline}
+
+/* 愛心 */
+.kudos{max-width:760px;margin:36px auto 0;text-align:center}
+.kudos button{background:var(--paper);border:2px solid var(--edge);box-shadow:4px 4px 0 var(--shadow);
+  padding:10px 26px;display:inline-flex;align-items:center;gap:10px;font-size:1rem}
+.kudos button:active{transform:translate(4px,4px);box-shadow:0 0 0 var(--shadow)}
+.kudos button svg{width:22px;height:22px}
+.kudos button.on svg{fill:#e8879f;stroke:#e8879f}
+.kudos .note{font-size:.72rem;color:var(--soft);margin-top:10px;font-style:italic}
+
+/* 接續閱讀 */
+.resume{max-width:760px;margin:0 auto 24px;border:2px solid var(--edge);background:var(--sky);
+  padding:10px 14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;font-size:.86rem}
+.resume .grow{flex:1}
+
+/* 回到頂端 */
+#toTop{position:fixed;left:18px;bottom:18px;z-index:55;display:none;
+  background:var(--paper);border:2px solid var(--edge);box-shadow:3px 3px 0 var(--shadow);padding:8px}
+#toTop.on{display:flex}
+#toTop svg{width:18px;height:18px;stroke-width:2.2}
+
+@media (max-width:760px){
+  body{font-size:16px;line-height:1.88}
+  main{padding:0 14px 160px}
+  .topbar-in{padding:8px 12px;gap:8px}
+  .brand-mini{display:none}
+  #qbtn{display:none}
+  .hero{padding:26px 14px 16px}
+  .hero h1{font-size:2rem}
+  .hero .sub{font-size:.68rem;margin-top:8px}
+  .hero-art{gap:18px;margin-top:16px}
+  .hero-art svg{width:42px;height:42px}
+  .grid{grid-template-columns:1fr;gap:20px}
+  .card{padding:22px 16px;margin-bottom:34px}
+  .corner-art{width:46px;height:46px;right:12px;top:12px}
+  .notice ol{padding-left:1.2em}
+  .post-cover{height:200px;margin-bottom:28px}
+  .post-head h1{font-size:1.45rem}
+  .rich,.comments,.post-nav{max-width:100%}
+  #dock{right:8px;left:8px;bottom:8px;width:auto}
+  input[type=text],input[type=password],input[type=url],textarea,select{font-size:16px}
+  .cmt-form .row input{max-width:100%}
+  .modal{padding:0}
+  #toTop{left:8px;bottom:8px}
+  .toc,.kudos,.resume{max-width:100%}
+  .modal-cover{height:180px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto;font-family:var(--serif)}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-in">
+    <button class="icon-btn" id="backBtn" title="返回" aria-label="返回" style="display:none">
+      <svg viewBox="0 0 24 24" class="art"><path d="M15 5.5 8.5 12 15 18.5"/></svg>
+    </button>
+    <span class="brand-mini" data-go="#/" role="link" tabindex="0">sese's</span>
+    <div class="search-wrap">
+      <input id="q" type="text" placeholder="搜尋文章標題或關鍵字…" aria-label="搜尋文章">
+      <button class="icon-btn" id="qbtn" title="搜尋" aria-label="搜尋">
+        <svg viewBox="0 0 24 24" class="art"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg>
+      </button>
+      <button class="icon-btn" data-go="#/admin" title="管理" aria-label="管理">
+        <svg viewBox="0 0 24 24" class="art"><circle cx="8" cy="12" r="4"/><path d="M12 12h9M18 12v3.5M15 12v2.5"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="hero" id="hero">
+  <h1>sese's</h1>
+  <div class="sub">only for shinyu &amp; dohoon</div>
+  <div class="px-rule"></div>
+  <div class="lang-pick" id="heroLang"></div>
+  <div class="hero-art" id="heroArt"></div>
+</div>
+
+<main id="app"></main>
+
+<footer>
+  <div id="footArt"></div>
+  <div class="lang-pick" id="footLang"></div>
+  <div class="lang-pick" id="footTheme"></div>
+  <div>sese's · <span data-go="#/admin" role="link" tabindex="0" style="text-decoration:underline">管理</span></div>
+</footer>
+
+<div id="dock" class="px-box">
+  <div class="bar"><b id="dockTitle">配樂</b>
+    <button id="dockMini" title="收合" aria-label="收合">
+      <svg id="dockChev" viewBox="0 0 24 24" class="art"><path d="M6 10l6 6 6-6"/></svg>
+    </button>
+    <button id="dockClose" title="關閉" aria-label="關閉">
+      <svg viewBox="0 0 24 24" class="art"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button></div>
+  <div class="body" id="dockBody"></div>
+</div>
+
+<button id="toTop" title="回到頂端" aria-label="回到頂端">
+  <svg viewBox="0 0 24 24" class="art"><path d="M12 19V6"/><path d="M6 11.5 12 5.5l6 6"/></svg>
+</button>
+
+<div class="modal" id="modal"><div class="modal-in" id="modalIn"></div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+/* =========================================================
+   0. 設定
+   ========================================================= */
+const ADMIN_PASSWORD = "sese247";      // ← 改成你自己的密碼
+const ADMIN_NAME     = "碎碎"; // 管理員留言時自動帶入的名字
+const MAX_IMAGE_MB   = 50;   // 可選的圖片大小上限，超過才擋（會自動壓縮）
+const MAX_AUDIO_MB   = 10;   // mp3 上限
+
+/* 留言過濾清單：想加就加一行，想放行就刪一行。繁簡、夾空白符號都擋得到 */
+const BLOCK_WORDS = [
+  "幹你","幹妳","幹您","幹恁","幹林","幹您娘","甘霖娘","操你","操妳","肏","雞掰","機掰","雞巴","懶叫","屌你",
+  "媽的","他媽","你媽的","尼瑪","三小","靠背你",
+  "白痴","白癡","智障","弱智","腦殘","低能","廢物","賤人","賤貨","婊子","婊","蕩婦","妓女",
+  "雜種","畜生","王八蛋","去死","死全家","醜八怪","滾蛋",
+  "娘炮","人妖","死玻璃",
+  "fuck","fuk","fck","shit","bitch","bastard","asshole","cunt","whore","slut","dickhead","motherfucker","retard","nigger"
+];
+const ALLOW_WORDS = ["婊姊","靠背包"];
+
+/* =========================================================
+   1. 儲存層
+   ========================================================= */
+const store = {
+  mode:null,   // cloud / local / none：啟動時決定一次，之後不再混用
+  async init(){
+    if(window.storage){
+      try{
+        await window.storage.set("__probe__","1",false);
+        const r=await window.storage.get("__probe__",false);
+        if(r&&r.value==="1"){ this.mode="cloud"; return; }
+      }catch(e){}
+    }
+    try{ localStorage.setItem("__probe__","1"); localStorage.removeItem("__probe__"); this.mode="local"; }
+    catch(e){ this.mode="none"; }
+  },
+  async get(k){
+    if(this.mode==="cloud"){ try{ const r=await window.storage.get(k,false); return r? r.value : null; }catch(e){ return null; } }
+    if(this.mode==="local"){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+    return null;
+  },
+  async set(k,v){
+    if(this.mode==="cloud"){ try{ await window.storage.set(k,v,false); return true; }catch(e){ return false; } }
+    if(this.mode==="local"){ try{ localStorage.setItem(k,v); return true; }catch(e){ return false; } }
+    return false;
+  }
+};
+async function getJSON(k,fb){ try{ const r=await store.get(k); return r? JSON.parse(r) : fb; }catch(e){ return fb; } }
+async function setJSON(k,v){ return store.set(k,JSON.stringify(v)); }
+
+/* =========================================================
+   2. 繁簡轉換
+   ========================================================= */
+const T2S_RAW = "㑯㑔㑳㑇㑶㐹㓨刾㘚㘎㜄㚯㜏㛣㠏㟆㥮㤘㩜㨫㩳㧐㩵擜䁻䀥䃮鿎䊷䌶䋙䌺䋚䌻䋹䌿䋻䌾䍦䍠䎱䎬䙡䙌䜀䜧䝼䞍䥇䦂䥑鿏䥱䥾䦛䦶䦟䦷䯀䯅䰾鲃䱷䲣䱽䲝䲁鳚䲘鳤䴉鹮丟丢並并么幺乾干亂乱亙亘亞亚佇伫佈布佔占併并來来侖仑侶侣侷局俁俣係系俔伣俠侠俥伡俬私倀伥倆俩倈俫倉仓個个們们倖幸倫伦倲㑈偉伟偑㐽側侧偵侦偽伪傌㐷傑杰傖伧傘伞備备傢家傭佣傯偬傳传傴伛債债傷伤傾倾僂偻僅仅僉佥僑侨僕仆僞伪僥侥僨偾僱雇價价儀仪儁俊儂侬億亿儈侩儉俭儎傤儐傧儔俦儕侪儘尽償偿優优儲储儷俪儸㑩儺傩儻傥儼俨兇凶兌兑兒儿兗兖內内兩两冊册冑胄冪幂凈净凍冻凜凛凱凯別别刪删剄刭則则剋克剎刹剗刬剛刚剝剥剮剐剴剀創创剷铲劃划劇剧劉刘劊刽劌刿劍剑劏㓥劑剂劚㔉勁劲動动務务勛勋勝胜勞劳勢势勩勚勱劢勳勋勵励勸劝勻匀匭匦匯汇匱匮區区協协卹恤卻却卽即厙厍厠厕厤历厭厌厲厉厴厣參参叄叁叢丛吒咤吳吴吶呐呂吕咼呙員员唄呗唸念問问啓启啞哑啟启啢唡喎㖞喚唤喪丧喫吃喬乔單单喲哟嗆呛嗇啬嗊唝嗎吗嗚呜嗩唢嗶哔嘆叹嘍喽嘓啯嘔呕嘖啧嘗尝嘜唛嘩哗嘮唠嘯啸嘰叽嘵哓嘸呒嘽啴噁恶噓嘘噚㖊噝咝噠哒噥哝噦哕噯嗳噲哙噴喷噸吨噹当嚀咛嚇吓嚌哜嚐尝嚕噜嚙啮嚥咽嚦呖嚨咙嚮向嚲亸嚳喾嚴严嚶嘤囀啭囁嗫囂嚣囅冁囈呓囉啰囌苏囑嘱囪囱圇囵國国圍围園园圓圆圖图團团垻坝埡垭埰采執执堅坚堊垩堖垴堝埚堯尧報报場场塊块塋茔塏垲塒埘塗涂塚冢塢坞塤埙塵尘塹堑墊垫墜坠墮堕墰坛墳坟墶垯墻墙墾垦壇坛壋垱壎埙壓压壘垒壙圹壚垆壜坛壞坏壟垄壠垅壢坜壩坝壪塆壯壮壺壶壼壸壽寿夠够夢梦夥伙夾夹奐奂奧奥奩奁奪夺奬奖奮奋奼姹妝妆姍姗姦奸娛娱婁娄婦妇婭娅媧娲媯妫媰㛀媼媪媽妈嫋袅嫗妪嫵妩嫺娴嫻娴嫿婳嬀妫嬃媭嬈娆嬋婵嬌娇嬙嫱嬡嫒嬤嬷嬪嫔嬰婴嬸婶孃娘孋㛤孌娈孫孙學学孿孪宮宫寀采寢寝實实寧宁審审寫写寬宽寵宠寶宝將将專专尋寻對对導导尷尴屆届屍尸屓屃屜屉屢屡層层屨屦屬属岡冈峯峰峴岘島岛峽峡崍崃崑昆崗岗崙仑崢峥崬岽嵐岚嵗岁嵾㟥嶁嵝嶄崭嶇岖嶔嵚嶗崂嶠峤嶢峣嶧峄嶨峃嶮崄嶸嵘嶺岭嶼屿嶽岳巋岿巒峦巔巅巖岩巰巯巹卺帥帅師师帳帐帶带幀帧幃帏幓㡎幗帼幘帻幟帜幣币幫帮幬帱幹干幾几庫库廁厕廂厢廄厩廈厦廎庼廕荫廚厨廝厮廟庙廠厂廡庑廢废廣广廩廪廬庐廳厅弒弑弔吊弳弪張张強强彆别彈弹彌弥彎弯彔录彙汇彠彟彥彦彫雕彲彨彿佛後后徑径從从徠徕復复徵征徹彻恆恒恥耻悅悦悞悮悵怅悶闷悽凄惡恶惱恼惲恽惻恻愛爱愜惬愨悫愴怆愷恺愾忾慄栗態态慍愠慘惨慚惭慟恸慣惯慤悫慪怄慫怂慮虑慳悭慶庆慺㥪慼戚慾欲憂忧憊惫憐怜憑凭憒愦憖慭憚惮憤愤憫悯憮怃憲宪憶忆懇恳應应懌怿懍懔懞蒙懟怼懣懑懤㤽懨恹懲惩懶懒懷怀懸悬懺忏懼惧懾慑戀恋戇戆戔戋戧戗戩戬戰战戱戯戲戏戶户抬擡拋抛挩捝挱挲挾挟捨舍捫扪捱挨捲卷掃扫掄抡掆㧏掗挜掙挣掛挂採采揀拣揚扬換换揮挥揯搄損损搖摇搗捣搵揾搶抢摑掴摜掼摟搂摯挚摳抠摶抟摺折摻掺撈捞撏挦撐撑撓挠撝㧑撟挢撣掸撥拨撫抚撲扑撳揿撻挞撾挝撿捡擁拥擄掳擇择擊击擋挡擓㧟擔担據据擠挤擣捣擬拟擯摈擰拧擱搁擲掷擴扩擷撷擺摆擻擞擼撸擽㧰擾扰攄摅攆撵攏拢攔拦攖撄攙搀攛撺攜携攝摄攢攒攣挛攤摊攪搅攬揽敎教敓敚敗败敘叙敵敌數数斂敛斃毙斆敩斕斓斬斩斷断於于旂旗旣既昇升時时晉晋晝昼暈晕暉晖暘旸暢畅暫暂曄晔曆历曇昙曉晓曏向曖暧曠旷曨昽曬晒書书會会朧胧朮术東东枴拐柵栅柺拐査查桿杆梔栀梘枧條条梟枭梲棁棄弃棊棋棖枨棗枣棟栋棡㭎棧栈棲栖棶梾椏桠椲㭏楊杨楓枫楨桢業业極极榘矩榦干榪杩榮荣榲榅榿桤構构槍枪槓杠槤梿槧椠槨椁槮椮槳桨槶椢槼椝樁桩樂乐樅枞樑梁樓楼標标樞枢樢㭤樣样樧榝樫㭴樳桪樸朴樹树樺桦樿椫橈桡橋桥機机橢椭橫横檁檩檉柽檔档檜桧檟槚檢检檣樯檮梼檯台檳槟檸柠檻槛櫃柜櫓橹櫚榈櫛栉櫝椟櫞橼櫟栎櫥橱櫧槠櫨栌櫪枥櫫橥櫬榇櫱蘖櫳栊櫸榉櫻樱欄栏欅榉權权欏椤欒栾欖榄欞棂欽钦歎叹歐欧歟欤歡欢歲岁歷历歸归歿殁殘残殞殒殤殇殨㱮殫殚殭僵殮殓殯殡殰㱩殲歼殺杀殻壳殼壳毀毁毆殴毿毵氂牦氈毡氌氇氣气氫氢氬氩氳氲氾泛汎泛汙污決决沒没沖冲況况泝溯洩泄洶汹浹浃涇泾涗涚涼凉淒凄淚泪淥渌淨净淩凌淪沦淵渊淶涞淺浅渙涣減减渢沨渦涡測测渾浑湊凑湞浈湧涌湯汤溈沩準准溝沟溫温溮浉溳涢溼湿滄沧滅灭滌涤滎荥滙汇滬沪滯滞滲渗滷卤滸浒滻浐滾滚滿满漁渔漊溇漚沤漢汉漣涟漬渍漲涨漵溆漸渐漿浆潀潨潁颍潑泼潔洁潙沩潚㴋潛潜潤润潯浔潰溃潷滗潿涠澀涩澆浇澇涝澐沄澗涧澠渑澤泽澦滪澩泶澮浍澱淀澾㳠濁浊濃浓濄㳡濕湿濘泞濚溁濛蒙濜浕濟济濤涛濧㳔濫滥濰潍濱滨濺溅濼泺濾滤瀂澛瀅滢瀆渎瀇㲿瀉泻瀋沈瀏浏瀕濒瀘泸瀝沥瀟潇瀠潆瀦潴瀧泷瀨濑瀰弥瀲潋瀾澜灃沣灄滠灑洒灕漓灘滩灝灏灡㳕灣湾灤滦灧滟灩滟災灾為为烏乌烴烃無无煉炼煒炜煙烟煢茕煥焕煩烦煬炀煱㶽熅煴熒荧熗炝熱热熲颎熾炽燁烨燈灯燉炖燒烧燙烫燜焖營营燦灿燬毁燭烛燴烩燶㶶燻熏燼烬燾焘爍烁爐炉爛烂爭争爲为爺爷爾尔牀床牆墙牘牍牽牵犖荦犛牦犢犊犧牺狀状狹狭狽狈猙狰猶犹猻狲獁犸獃呆獄狱獅狮獎奖獨独獪狯獫猃獮狝獰狞獱㺍獲获獵猎獷犷獸兽獺獭獻献獼猕玀猡現现琱雕琺珐琿珲瑋玮瑒玚瑣琐瑤瑶瑩莹瑪玛瑲玱璉琏璡琎璣玑璦瑷璫珰璯㻅環环璵玙璸瑸璽玺璿璇瓊琼瓏珑瓔璎瓚瓒甌瓯甕瓮產产産产甦苏甯宁畝亩畢毕畫画異异畵画當当疇畴疊叠痙痉痠酸痺痹痾疴瘂痖瘋疯瘍疡瘓痪瘞瘗瘡疮瘧疟瘮瘆瘲疭瘺瘘瘻瘘療疗癆痨癇痫癉瘅癒愈癘疠癟瘪癡痴癢痒癤疖癥症癧疬癩癞癬癣癭瘿癮瘾癰痈癱瘫癲癫發发皁皂皚皑皰疱皸皲皺皱盃杯盜盗盞盏盡尽監监盤盘盧卢盪荡眞真眥眦眾众睏困睜睁睞睐睪睾瞘眍瞜䁖瞞瞒瞶瞆瞼睑矇蒙矓眬矚瞩矯矫硃朱硜硁硤硖硨砗硯砚碕埼碩硕碭砀碸砜確确碼码碽䂵磑硙磚砖磠硵磣碜磧碛磯矶磽硗磾䃅礄硚礆硷礎础礙碍礦矿礪砺礫砾礬矾礱砻祕秘祿禄禍祸禎祯禕祎禡祃禦御禪禅禮礼禰祢禱祷禿秃秈籼稅税稈秆稏䅉稜棱稟禀種种稱称穀谷穇䅟穌稣積积穎颖穠秾穡穑穢秽穩稳穫获穭穞窩窝窪洼窮穷窯窑窵窎窶窭窺窥竄窜竅窍竇窦竈灶竊窃竪竖競竞筆笔筍笋筧笕筴䇲箇个箋笺箏筝節节範范築筑篋箧篔筼篠筿篤笃篩筛篳筚簀箦簍篓簑蓑簞箪簡简簣篑簫箫簷檐簹筜簽签簾帘籃篮籌筹籔䉤籙箓籛篯籜箨籟籁籠笼籤签籩笾籪簖籬篱籮箩籲吁粵粤糉粽糝糁糞粪糧粮糰团糲粝糴籴糶粜糹纟糾纠紀纪紂纣約约紅红紆纡紇纥紈纨紉纫紋纹納纳紐纽紓纾純纯紕纰紖纼紗纱紘纮紙纸級级紛纷紜纭紝纴紡纺紬䌷紮扎細细紱绂紲绁紳绅紵纻紹绍紺绀紼绋紿绐絀绌終终絃弦組组絅䌹絆绊絎绗結结絕绝絛绦絝绔絞绞絡络絢绚給给絨绒絰绖統统絲丝絳绛絶绝絹绢綁绑綃绡綆绠綈绨綉绣綌绤綏绥綐䌼綑捆經经綜综綞缍綠绿綢绸綣绻綫线綬绶維维綯绹綰绾綱纲網网綳绷綴缀綵彩綸纶綹绺綺绮綻绽綽绰綾绫綿绵緄绲緇缁緊紧緋绯緑绿緒绪緓绬緔绱緗缃緘缄緙缂線线緝缉緞缎締缔緡缗緣缘緦缌編编緩缓緬缅緯纬緱缑緲缈練练緶缏緹缇緻致緼缊縈萦縉缙縊缢縋缒縐绉縑缣縕缊縗缞縛缚縝缜縞缟縟缛縣县縧绦縫缝縭缡縮缩縱纵縲缧縳䌸縴纤縵缦縶絷縷缕縹缥總总績绩繃绷繅缫繆缪繒缯織织繕缮繚缭繞绕繡绣繢缋繩绳繪绘繫系繭茧繮缰繯缳繰缲繳缴繸䍁繹绎繼继繽缤繾缱繿䍀纇颣纈缬纊纩續续纍累纏缠纓缨纔才纖纤纘缵纜缆缽钵罃䓨罈坛罌罂罎坛罰罚罵骂罷罢羅罗羆罴羈羁羋芈羣群羥羟羨羡義义羶膻習习翫玩翬翚翹翘翽翙耬耧耮耢聖圣聞闻聯联聰聪聲声聳耸聵聩聶聂職职聹聍聽听聾聋肅肃脅胁脈脉脛胫脣唇脩修脫脱脹胀腎肾腖胨腡脶腦脑腫肿腳脚腸肠膃腽膕腘膚肤膞䏝膠胶膩腻膽胆膾脍膿脓臉脸臍脐臏膑臘腊臚胪臟脏臠脔臢臜臥卧臨临臺台與与興兴舉举舊旧舘馆艙舱艤舣艦舰艫舻艱艰艷艳芻刍苧苎茲兹荊荆莊庄莖茎莢荚莧苋華华菴庵菸烟萇苌萊莱萬万萴荝萵莴葉叶葒荭著着葤荮葦苇葯药葷荤蒐搜蒓莼蒔莳蒕蒀蒞莅蒼苍蓀荪蓆席蓋盖蓮莲蓯苁蓴莼蓽荜蔔卜蔘参蔞蒌蔣蒋蔥葱蔦茑蔭荫蕁荨蕆蒇蕎荞蕒荬蕓芸蕕莸蕘荛蕢蒉蕩荡蕪芜蕭萧蕷蓣薀蕰薈荟薊蓟薌芗薑姜薔蔷薘荙薟莶薦荐薩萨薳䓕薴苧薵䓓薹苔薺荠藍蓝藎荩藝艺藥药藪薮藭䓖藴蕴藶苈藹蔼藺蔺蘀萚蘄蕲蘆芦蘇苏蘊蕴蘋苹蘚藓蘞蔹蘢茏蘭兰蘺蓠蘿萝虆蔂處处虛虚虜虏號号虧亏虯虬蛺蛱蛻蜕蜆蚬蝕蚀蝟猬蝦虾蝨虱蝸蜗螄蛳螞蚂螢萤螮䗖螻蝼螿螀蟄蛰蟈蝈蟎螨蟣虮蟬蝉蟯蛲蟲虫蟶蛏蟻蚁蠁蚃蠅蝇蠆虿蠍蝎蠐蛴蠑蝾蠔蚝蠟蜡蠣蛎蠨蟏蠱蛊蠶蚕蠻蛮衆众衊蔑術术衕同衚胡衛卫衝冲袞衮裊袅裏里補补裝装裡里製制複复褌裈褘袆褲裤褳裢褸褛褻亵襇裥襉裥襏袯襖袄襝裣襠裆襤褴襪袜襬摆襯衬襲袭襴襕覈核見见覎觃規规覓觅視视覘觇覡觋覥觍覦觎親亲覬觊覯觏覲觐覷觑覺觉覽览覿觌觀观觴觞觶觯觸触訁讠訂订訃讣計计訊讯訌讧討讨訐讦訒讱訓训訕讪訖讫託托記记訛讹訝讶訟讼訢䜣訣诀訥讷訩讻訪访設设許许訴诉訶诃診诊註注証证詁诂詆诋詎讵詐诈詒诒詔诏評评詖诐詗诇詘诎詛诅詞词詠咏詡诩詢询詣诣試试詩诗詫诧詬诟詭诡詮诠詰诘話话該该詳详詵诜詼诙詿诖誄诔誅诛誆诓誇夸誌志認认誑诳誒诶誕诞誘诱誚诮語语誠诚誡诫誣诬誤误誥诰誦诵誨诲說说説说誰谁課课誶谇誹诽誼谊誾訚調调諂谄諄谆談谈諉诿請请諍诤諏诹諑诼諒谅論论諗谂諛谀諜谍諝谞諞谝諡谥諢诨諤谔諦谛諧谐諫谏諭谕諮咨諱讳諳谙諶谌諷讽諸诸諺谚諼谖諾诺謀谋謁谒謂谓謄誊謅诌謊谎謎谜謐谧謔谑謖谡謗谤謙谦謚谥講讲謝谢謠谣謡谣謨谟謫谪謬谬謭谫謳讴謹谨謾谩譁哗證证譎谲譏讥譖谮識识譙谯譚谭譜谱譟噪譫谵譭毁譯译議议譴谴護护譸诪譽誉譾谫讀读讅谉變变讋詟讌䜩讎雠讒谗讓让讕谰讖谶讚赞讜谠讞谳豈岂豎竖豐丰豔艳豬猪豶豮貓猫貙䝙貝贝貞贞貟贠負负財财貢贡貧贫貨货販贩貪贪貫贯責责貯贮貰贳貲赀貳贰貴贵貶贬買买貸贷貺贶費费貼贴貽贻貿贸賀贺賁贲賂赂賃赁賄贿賅赅資资賈贾賊贼賑赈賒赊賓宾賕赇賙赒賚赉賜赐賞赏賠赔賡赓賢贤賣卖賤贱賦赋賧赕質质賫赍賬账賭赌賰䞐賴赖賵赗賺赚賻赙購购賽赛賾赜贄贽贅赘贇赟贈赠贊赞贋赝贍赡贏赢贐赆贓赃贔赑贖赎贗赝贛赣贜赃赬赪趕赶趙赵趨趋趲趱跡迹踐践踰逾踴踊蹌跄蹕跸蹟迹蹠跖蹣蹒蹤踪蹺跷躂跶躉趸躊踌躋跻躍跃躎䟢躑踯躒跞躓踬躕蹰躚跹躡蹑躥蹿躦躜躪躏軀躯車车軋轧軌轨軍军軑轪軒轩軔轫軛轭軟软軤轷軫轸軲轱軸轴軹轵軺轺軻轲軼轶軾轼較较輅辂輇辁輈辀載载輊轾輒辄輓挽輔辅輕轻輛辆輜辎輝辉輞辋輟辍輥辊輦辇輩辈輪轮輬辌輯辑輳辏輸输輻辐輼辒輾辗輿舆轀辒轂毂轄辖轅辕轆辘轉转轍辙轎轿轔辚轟轰轡辔轢轹轤轳辦办辭辞辮辫辯辩農农迴回逕迳這这連连週周進进遊游運运過过達达違违遙遥遜逊遞递遠远遡溯適适遲迟遷迁選选遺遗遼辽邁迈還还邇迩邊边邏逻邐逦郟郏郵邮鄆郓鄉乡鄒邹鄔邬鄖郧鄧邓鄭郑鄰邻鄲郸鄴邺鄶郐鄺邝酇酂酈郦醃腌醖酝醜丑醞酝醟蒏醣糖醫医醬酱醱酦釀酿釁衅釃酾釅酽釋释釐厘釒钅釓钆釔钇釕钌釗钊釘钉釙钋針针釣钓釤钐釦扣釧钏釩钒釵钗釷钍釹钕釺钎釾䥺鈀钯鈁钫鈃钘鈄钭鈅钥鈈钚鈉钠鈍钝鈎钩鈐钤鈑钣鈒钑鈔钞鈕钮鈞钧鈡钟鈣钙鈥钬鈦钛鈧钪鈮铌鈰铈鈳钶鈴铃鈷钴鈸钹鈹铍鈺钰鈽钸鈾铀鈿钿鉀钾鉅巨鉆钻鉈铊鉉铉鉋铇鉍铋鉑铂鉕钷鉗钳鉚铆鉛铅鉞钺鉢钵鉤钩鉦钲鉬钼鉭钽鉳锫鉶铏鉸铰鉺铒鉻铬鉿铪銀银銃铳銅铜銍铚銑铣銓铨銖铢銘铭銚铫銛铦銜衔銠铑銣铷銥铱銦铟銨铵銩铥銪铕銫铯銬铐銱铞銳锐銷销銹锈銻锑銼锉鋁铝鋃锒鋅锌鋇钡鋌铤鋏铗鋒锋鋙铻鋝锊鋟锓鋣铘鋤锄鋥锃鋦锔鋨锇鋩铓鋪铺鋭锐鋮铖鋯锆鋰锂鋱铽鋶锍鋸锯鋼钢錁锞錄录錆锖錇锫錈锩錏铔錐锥錒锕錕锟錘锤錙锱錚铮錛锛錟锬錠锭錡锜錢钱錦锦錨锚錩锠錫锡錮锢錯错録录錳锰錶表錸铼錼镎鍀锝鍁锨鍃锪鍅钫鍆钔鍇锴鍈锳鍊炼鍋锅鍍镀鍔锷鍘铡鍚钖鍛锻鍠锽鍤锸鍥锲鍩锘鍬锹鍰锾鍵键鍶锶鍺锗鍼针鍾钟鎂镁鎄锿鎇镅鎊镑鎌镰鎔镕鎖锁鎘镉鎚锤鎛镈鎡镃鎢钨鎣蓥鎦镏鎧铠鎩铩鎪锼鎬镐鎭镇鎮镇鎰镒鎲镋鎳镍鎵镓鎶鿔鎸镌鎿镎鏃镞鏇旋鏈链鏌镆鏍镙鏐镠鏑镝鏗铿鏘锵鏜镗鏝镘鏞镛鏟铲鏡镜鏢镖鏤镂鏨錾鏰镚鏵铧鏷镤鏹镪鏺䥽鏽锈鐃铙鐋铴鐐镣鐒铹鐓镦鐔镡鐘钟鐙镫鐝镢鐠镨鐥䦅鐦锎鐧锏鐨镄鐫镌鐮镰鐯䦃鐲镯鐳镭鐵铁鐶镮鐸铎鐺铛鐿镱鑄铸鑊镬鑌镔鑑鉴鑒鉴鑔镲鑕锧鑞镴鑠铄鑣镳鑥镥鑭镧鑰钥鑱镵鑲镶鑷镊鑹镩鑼锣鑽钻鑾銮鑿凿钁镢钂镋長长門门閂闩閃闪閆闫閈闬閉闭開开閌闶閎闳閏闰閑闲閒闲間间閔闵閘闸閡阂閣阁閤合閥阀閨闺閩闽閫阃閬阆閭闾閱阅閲阅閶阊閹阉閻阎閼阏閽阍閾阈閿阌闃阒闆板闇暗闈闱闊阔闋阕闌阑闍阇闐阗闒阘闓闿闔阖闕阙闖闯關关闞阚闠阓闡阐闢辟闤阛闥闼陘陉陝陕陞升陣阵陰阴陳陈陸陆陽阳隉陧隊队階阶隕陨際际隨随險险隯陦隱隐隴陇隸隶隻只雋隽雖虽雙双雛雏雜杂雞鸡離离難难雲云電电霑沾霢霡霧雾霽霁靂雳靄霭靆叇靈灵靉叆靚靓靜静靝靔靦腼靨靥鞏巩鞝绱鞦秋鞽鞒韁缰韃鞑韆千韉鞯韋韦韌韧韍韨韓韩韙韪韜韬韝鞲韞韫韻韵響响頁页頂顶頃顷項项順顺頇顸須须頊顼頌颂頎颀頏颃預预頑顽頒颁頓顿頗颇領领頜颌頡颉頤颐頦颏頭头頮颒頰颊頲颋頴颕頷颔頸颈頹颓頻频頽颓顆颗題题額额顎腭顏颜顒颙顓颛顔颜願愿顙颡顛颠類类顢颟顥颢顧顾顫颤顬颥顯显顰颦顱颅顳颞顴颧風风颭飐颮飑颯飒颱台颳刮颶飓颸飔颺飏颻飖颼飕飀飗飄飘飆飙飈飚飛飞飠饣飢饥飣饤飥饦飩饨飪饪飫饫飭饬飯饭飱飧飲饮飴饴飼饲飽饱飾饰飿饳餃饺餄饸餅饼餈糍餉饷養养餌饵餎饹餏饻餑饽餒馁餓饿餕馂餖饾餘余餚肴餛馄餜馃餞饯餡馅館馆餬糊餱糇餳饧餵喂餶馉餷馇餺馎餼饩餾馏餿馊饁馌饃馍饅馒饈馐饉馑饊馓饋馈饌馔饑饥饒饶饗飨饜餍饞馋饢馕馬马馭驭馮冯馱驮馳驰馴驯馹驲駁驳駐驻駑驽駒驹駔驵駕驾駘骀駙驸駛驶駝驼駟驷駡骂駢骈駭骇駰骃駱骆駸骎駿骏騁骋騂骍騅骓騌骔騍骒騎骑騏骐騖骛騙骗騤骙騧䯄騫骞騭骘騮骝騰腾騶驺騷骚騸骟騾骡驀蓦驁骜驂骖驃骠驄骢驅驱驊骅驌骕驍骁驏骣驕骄驗验驚惊驛驿驟骤驢驴驤骧驥骥驦骦驪骊驫骉骯肮髏髅髒脏體体髕髌髖髋髮发鬆松鬍胡鬚须鬢鬓鬥斗鬧闹鬨哄鬩阋鬮阄鬱郁鬹鬶魎魉魘魇魚鱼魛鱽魢鱾魨鲀魯鲁魴鲂魷鱿魺鲄鮁鲅鮃鲆鮊鲌鮋鲉鮍鲏鮎鲇鮐鲐鮑鲍鮒鲋鮓鲊鮚鲒鮜鲘鮝鲞鮞鲕鮣䲟鮦鲖鮪鲔鮫鲛鮭鲑鮮鲜鮳鲓鮶鲪鮺鲝鯀鲧鯁鲠鯇鲩鯉鲤鯊鲨鯒鲬鯔鲻鯕鲯鯖鲭鯗鲞鯛鲷鯝鲴鯡鲱鯢鲵鯤鲲鯧鲳鯨鲸鯪鲮鯫鲰鯰鲇鯴鲺鯷鳀鯽鲫鯿鳊鰁鳈鰂鲗鰃鳂鰆䲠鰈鲽鰉鳇鰌䲡鰍鳅鰏鲾鰐鳄鰒鳆鰓鳃鰛鳁鰜鳒鰟鳑鰠鳋鰣鲥鰥鳏鰧䲢鰨鳎鰩鳐鰭鳍鰮鳁鰱鲢鰲鳌鰳鳓鰵鳘鰷鲦鰹鲣鰺鲹鰻鳗鰼鳛鰾鳔鱂鳉鱅鳙鱈鳕鱉鳖鱒鳟鱔鳝鱖鳜鱗鳞鱘鲟鱝鲼鱟鲎鱠鲙鱣鳣鱤鳡鱧鳢鱨鲿鱭鲚鱯鳠鱷鳄鱸鲈鱺鲡鳥鸟鳧凫鳩鸠鳬凫鳲鸤鳳凤鳴鸣鳶鸢鳾䴓鴆鸩鴇鸨鴉鸦鴒鸰鴕鸵鴛鸳鴝鸲鴞鸮鴟鸱鴣鸪鴦鸯鴨鸭鴯鸸鴰鸹鴴鸻鴷䴕鴻鸿鴿鸽鵁䴔鵂鸺鵃鸼鵐鹀鵑鹃鵒鹆鵓鹁鵜鹈鵝鹅鵠鹄鵡鹉鵪鹌鵬鹏鵮鹐鵯鹎鵰雕鵲鹊鵷鹓鵾鹍鶄䴖鶇鸫鶉鹑鶊鹒鶓鹋鶖鹙鶘鹕鶚鹗鶡鹖鶥鹛鶩鹜鶪䴗鶬鸧鶯莺鶲鹟鶴鹤鶹鹠鶺鹡鶻鹘鶼鹣鶿鹚鷀鹚鷁鹢鷂鹞鷄鸡鷉䴘鷊鹝鷓鹧鷖鹥鷗鸥鷙鸷鷚鹨鷥鸶鷦鹪鷫鹔鷯鹩鷲鹫鷳鹇鷴鹇鷸鹬鷹鹰鷺鹭鷽鸴鸂㶉鸇鹯鸊䴙鸌鹱鸏鹲鸕鸬鸘鹴鸚鹦鸛鹳鸝鹂鸞鸾鹵卤鹹咸鹺鹾鹼碱鹽盐麗丽麥麦麩麸麪面麫面麯曲麴曲麵面麼么麽么黃黄黌黉點点黨党黲黪黴霉黶黡黷黩黽黾黿鼋鼂鼌鼉鼍鼕冬鼴鼹齊齐齋斋齎赍齏齑齒齿齔龀齕龁齗龂齙龅齜龇齟龃齠龆齡龄齣出齦龈齧啮齪龊齬龉齲龋齶腭齷龌龍龙龎厐龐庞龑䶮龔龚龕龛龜龟鿁䜤鿓鿒";
+const T2S = (()=>{ const m={}; for(let i=0;i<T2S_RAW.length;i+=2) m[T2S_RAW[i]]=T2S_RAW[i+1]; return m; })();
+const T2S_PHRASE = (()=>{
+  const m={}; let max=2;
+  "酒逢知己千鍾少話不投機半句多 酒逢知己千锺少话不投机半句多|大目乾連冥間救母變文 大目乾连冥间救母变文|衹見樹木不見森林 只见树木不见森林|書中自有千鍾粟 书中自有千锺粟|酒逢知己千鍾少 酒逢知己千锺少|旋轉乾坤之力 旋转乾坤之力|藉寇兵齎盜糧 借寇兵赍盗粮|乾坤大挪移 乾坤大挪移|宫商角徵羽 宫商角徵羽|一目瞭然 一目了然|乾坤一擲 乾坤一掷|乾坤再造 乾坤再造|乾隆年間 乾隆年间|乾隆皇帝 乾隆皇帝|以免藉口 以免借口|以功覆過 以功复过|侔德覆載 侔德复载|反反覆覆 反反复复|反覆思維 反复思维|反覆思量 反复思量|名覆金甌 名复金瓯|壺裏乾坤 壶里乾坤|幺麼小丑 幺麽小丑|幺麼小醜 幺麽小丑|徵羽摩柯 徵羽摩柯|扭轉乾坤 扭转乾坤|拉鍊工程 拉链工程|文錦覆阱 文锦复阱|於呼哀哉 於呼哀哉|旋乾轉坤 旋乾转坤|旋轉乾坤 旋转乾坤|朝乾夕惕 朝乾夕惕|沈沒成本 沉没成本|浪蕩乾坤 浪荡乾坤|狐藉虎威 狐借虎威|珍珠項鍊 珍珠项链|瞭如指掌 了如指掌|瞭然於心 了然于心|瞭若指掌 了若指掌|簡單明瞭 简单明了|肘手鍊足 肘手链足|藉故推辭 借故推辞|藉此機會 借此机会|藉端生事 借端生事|藉箸代籌 借箸代筹|藉草枕塊 借草枕块|衹見樹木 只见树木|袖裏乾坤 袖里乾坤|覆蕉尋鹿 复蕉寻鹿|覆鹿尋蕉 复鹿寻蕉|覆鹿遺蕉 复鹿遗蕉|變徵之聲 变徵之声|變徵之音 变徵之音|買臣覆水 买臣复水|踅門瞭戶 踅门了户|鑽石項鍊 钻石项链|雁杳魚沈 雁杳鱼沉|顛乾倒坤 颠乾倒坤|顛倒乾坤 颠倒乾坤|惡名昭著 恶名昭著|不瞭解 不了解|乾清宮 乾清宫|乾盛世 乾盛世|八濛山 八濛山|千鍾粟 千锺粟|反覆性 反复性|尼乾陀 尼乾陀|張法乾 张法乾|憑藉着 凭借着|找藉口 找借口|據瞭解 据了解|於世成 於世成|於仲完 於仲完|於其一 於其一|於勇明 於勇明|於崇文 於崇文|於忠祥 於忠祥|於惟一 於惟一|於梨華 於梨华|於清言 於清言|於竹屋 於竹屋|於陵子 於陵子|李乾德 李乾德|李澤鉅 李泽钜|李鍊福 李链福|李鍾郁 李锺郁|樊於期 樊於期|瞭解到 了解到|藉助於 借助于|藉寇兵 借寇兵|覆醬瓿 复酱瓿|角徵羽 角徵羽|貂覆額 貂复额|郭子乾 郭子乾|錢鍾書 钱锺书|鍾萬梅 锺万梅|鍾重發 锺重发|麼些族 麽些族|黄鍾公 黄锺公|著作權 著作权|著作人 著作人|著述家 著述家|上鍊 上链|么麼 幺麽|么麽 幺麽|乾元 乾元|乾卦 乾卦|乾嘉 乾嘉|乾圖 乾图|乾坤 乾坤|乾宅 乾宅|乾斷 乾断|乾旦 乾旦|乾曜 乾曜|乾紅 乾红|乾綱 乾纲|乾縣 乾县|乾象 乾象|乾造 乾造|乾道 乾道|乾陵 乾陵|乾隆 乾隆|傢俱 家具|凌藉 凌借|函覆 函复|反覆 反复|哪吒 哪吒|回覆 回复|射覆 射复|幺麼 幺麽|康乾 康乾|彷彿 仿佛|徵弦 徵弦|徵絃 徵弦|徵聲 徵声|徵調 徵调|徵音 徵音|憑藉 凭借|手鍊 手链|拉鍊 拉链|拜覆 拜复|於乎 於乎|於倫 於伦|於則 於则|於單 於单|於坦 於坦|於戲 於戏|於敖 於敖|於潛 於潜|於琳 於琳|於穆 於穆|於菟 於菟|於邑 於邑|明瞭 明了|明覆 明复|木吒 木吒|沈沒 沉没|沈積 沉积|沈船 沉船|沈默 沉默|流徵 流徵|滑藉 滑借|牴牾 抵牾|牴觸 抵触|甚鉅 甚钜|申覆 申复|畢昇 毕昇|發覆 发复|瞭如 了如|瞭然 了然|瞭解 了解|示覆 示复|稟覆 禀复|竺乾 竺乾|答覆 答复|篤麼 笃麽|籌畫 筹划|素藉 素借|茵藉 茵借|萬鍾 万锺|蒜薹 蒜薹|蕓薹 芸薹|蕩覆 荡复|蕭乾 萧乾|藉代 借代|藉以 借以|藉助 借助|藉卉 借卉|藉口 借口|藉喻 借喻|藉手 借手|藉據 借据|藉故 借故|藉方 借方|藉條 借条|藉槁 借槁|藉機 借机|藉此 借此|藉甚 借甚|藉由 借由|藉着 借着|藉端 借端|藉詞 借词|藉讀 借读|藉資 借资|衹得 只得|覆上 复上|覆住 复住|覆信 复信|覆冒 复冒|覆呈 复呈|覆命 复命|覆墓 复墓|覆宗 复宗|覆帳 复帐|覆幬 复帱|覆成 复成|覆按 复按|覆文 复文|覆杯 复杯|覆校 复校|覆瓿 复瓿|覆盂 复盂|覆育 复育|覆逆 复逆|覆醢 复醢|覆電 复电|覆露 复露|覆鼎 复鼎|見覆 见复|角徵 角徵|計畫 计划|變徵 变徵|躪藉 躏借|醞藉 酝借|重覆 重复|金吒 金吒|金鍊 金链|鈞覆 钧复|鉅子 钜子|鉅萬 钜万|鉅防 钜防|鉸鍊 铰链|銀鍊 银链|鍊墜 链坠|鍊子 链子|鍊形 链形|鍊條 链条|鍊錘 链锤|鍊鎖 链锁|鍛鍾 锻锺|鍾鍛 锺锻|鍾馗 锺馗|鎖鍊 锁链|鐵鍊 铁链|電覆 电复|露覆 露复|項鍊 项链|頗覆 颇复|頸鍊 颈链|顧藉 顾借|著作 著作|著名 著名|顯著 显著|著者 著者|土著 土著|著述 著述|著稱 著称|卓著 卓著|論著 论著|名著 名著|巨著 巨著|編著 编著|原著 原著|專著 专著|著錄 著录|昭著 昭著|著書 著书|譯著 译著|藉著 借着|慰藉 慰藉|狼藉 狼藉".split("|").forEach(x=>{ const i=x.indexOf(" "); if(i<0) return;
+    const k=x.slice(0,i); m[k]=x.slice(i+1); if(k.length>max) max=k.length; });
+  return {m,max};
+})();
+function toSimplified(s){
+  let o="",i=0;
+  while(i<s.length){
+    let hit=null;
+    for(let L=Math.min(T2S_PHRASE.max,s.length-i);L>1;L--){
+      const seg=s.substr(i,L);
+      if(T2S_PHRASE.m[seg]){ hit=[seg,T2S_PHRASE.m[seg]]; break; }
+    }
+    if(hit){ o+=hit[1]; i+=hit[0].length; } else { o+=(T2S[s[i]]||s[i]); i++; }
+  }
+  return o;
+}
+function toSimpleChars(s){ let o=""; for(const c of s) o+=(T2S[c]||c); return o; }
+
+/* =========================================================
+   3. 小工具
+   ========================================================= */
+const $ = s=>document.querySelector(s);
+const $$ = s=>[...document.querySelectorAll(s)];
+const esc = s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+let toastT;
+function toast(msg){ const t=$("#toast"); t.textContent=(LANG==="s"&&!IS_ADMIN)?toSimplified(msg):msg; t.classList.add("on");
+  clearTimeout(toastT); toastT=setTimeout(()=>t.classList.remove("on"),2600); }
+function fmtTime(t){ return new Date(t).toLocaleString("zh-TW",{year:"numeric",month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit"}); }
+function uid(){ return Math.random().toString(36).slice(2,10)+Date.now().toString(36); }
+
+/* 內文淨化：保留段落、換行、粗斜體與四種區塊 */
+const KEEP_INLINE=["b","strong","i","em","u","a","br","span"];
+const KEEP_BLOCK=["p","h2","blockquote","ul","ol","li","div"];
+function sanitizeRich(html){
+  const d=document.createElement("div"); d.innerHTML=html||"";
+  (function walk(n){
+    [...n.childNodes].forEach(c=>{
+      if(c.nodeType===8){ c.remove(); return; }
+      if(c.nodeType!==1) return;
+      let tag=c.tagName.toLowerCase();
+      if(["script","style","meta","link","iframe","object"].includes(tag)){ c.remove(); return; }
+      if(["h1","h3","h4","h5","h6"].includes(tag)){ const e=document.createElement("h2"); e.innerHTML=c.innerHTML; c.replaceWith(e); walk(e); return; }
+      if(tag==="div"){
+        const cls=c.className||"";
+        if(/\b(callout|white)\b/.test(cls)){
+          const keep=/\bcallout\b/.test(cls)?"callout":"white";
+          [...c.attributes].forEach(a=>c.removeAttribute(a.name));
+          c.className=keep; walk(c); return;
+        }
+        const p=document.createElement("p"); p.innerHTML=c.innerHTML; c.replaceWith(p); walk(p); return;
+      }
+      if(!KEEP_INLINE.includes(tag)&&!KEEP_BLOCK.includes(tag)){
+        const f=document.createDocumentFragment(); while(c.firstChild) f.appendChild(c.firstChild); c.replaceWith(f); return;
+      }
+      [...c.attributes].forEach(a=>{ if(!(tag==="a"&&a.name==="href")) c.removeAttribute(a.name); });
+      if(tag==="a"){ c.setAttribute("target","_blank"); c.setAttribute("rel","noopener"); }
+      walk(c);
+    });
+  })(d);
+  return d.innerHTML;
+}
+function plainText(p){
+  const body = p.html || (p.blocks||[]).map(b=>b.html).join(" ");
+  return [p.title,p.slogan,body].join(" ").replace(/<[^>]+>/g," ");
+}
+
+/* 留言用字檢查 */
+function normalizeForCheck(s){ return toSimpleChars(String(s).toLowerCase().replace(/[^\u4e00-\u9fffa-z0-9]/g,"")); }
+const BLOCK_N = BLOCK_WORDS.map(normalizeForCheck).filter(Boolean);
+const ALLOW_N = ALLOW_WORDS.map(normalizeForCheck).filter(Boolean);
+function checkComment(text){
+  const n=normalizeForCheck(text);
+  if(!n) return {ok:false,why:"留言看起來是空的，寫點什麼再送出吧。"};
+  if(/(.)\1{29,}/.test(text)) return {ok:false,why:"同一個字重複太多次囉，換個寫法再送出。"};
+  let masked=n; ALLOW_N.forEach(a=>{ masked=masked.split(a).join(""); });
+  for(const w of BLOCK_N) if(masked.includes(w))
+    return {ok:false,why:"留言裡有不太友善的字，換個說法再送出好嗎？這裡想留給大家舒服的空間。"};
+  return {ok:true};
+}
+
+/* =========================================================
+   4. 線稿圖案
+   ========================================================= */
+const ART = {
+  toast:`<svg viewBox="0 0 48 48" class="art" aria-hidden="true">
+    <path d="M13.5 41H34.5C35.9 41 37 39.9 37 38.5V25.6C39.6 25.2 41 23 41 20 41 12.5 33.4 6.5 24 6.5S7 12.5 7 20c0 3 1.4 5.2 4 5.6V38.5C11 39.9 12.1 41 13.5 41z"/>
+    <circle cx="19.9" cy="26.4" r="1.6" class="sol"/><circle cx="28.1" cy="26.4" r="1.6" class="sol"/>
+    <path d="M20.9 30.6c1.7 1.9 4.5 1.9 6.2 0"/>
+    <path d="M15.6 30h2.2M30.2 30h2.2"/></svg>`,
+  brother:`<svg viewBox="0 0 48 48" class="art" aria-hidden="true">
+    <path d="M24 9c-6.8 0-11.5 4.6-11.5 11.4 0 7.3 5 13.6 11.5 13.6s11.5-6.3 11.5-13.6C35.5 13.6 30.8 9 24 9z"/>
+    <path d="M24.5 9c-.8-2.3.8-4 3.2-3.8"/>
+    <path d="M13.5 19.5c3.5-1.2 7.5-3.4 10.5-6.2 2.8 3.2 6.6 5.3 10.5 6.2"/>
+    <ellipse cx="19.4" cy="23.4" rx="1.7" ry="2" class="sol"/>
+    <path d="M26.4 23.4c1.1-1.3 3-1.3 4.1 0"/>
+    <path d="M21.8 27.6c1.3 1.3 3.1 1.3 4.4 0"/>
+    <path d="M15.4 26.5h2.2M31 26.5h2.2"/>
+    <path d="M14 41c1.5-3.8 5.5-6 10-6s8.5 2.2 10 6"/></svg>`,
+  pair:`<svg viewBox="0 0 64 48" class="art" aria-hidden="true">
+    <circle cx="18.5" cy="13.5" r="7.5"/>
+    <circle cx="15.8" cy="13.5" r="1.3" class="sol"/><circle cx="21.2" cy="13.5" r="1.3" class="sol"/>
+    <path d="M16.8 17c1.1 1 2.8 1 3.9 0"/><path d="M12 11.5c2-3 5-4.5 8-4.2"/>
+    <path d="M18.5 21.5v8.5"/><path d="M18.5 30l-3.6 9M18.5 30l3.6 9"/><path d="M18.5 24.5l7.5 3"/>
+    <circle cx="45.5" cy="15" r="6.8"/>
+    <circle cx="43" cy="15" r="1.2" class="sol"/><circle cx="48" cy="15" r="1.2" class="sol"/>
+    <path d="M43.9 18.2c1 .9 2.6.9 3.6 0"/><path d="M40.5 10.5c1.5-2.2 4.5-3 6.5-1.8"/>
+    <path d="M45.5 22v8"/><path d="M45.5 30l-3.4 9M45.5 30l3.4 9"/><path d="M45.5 25l-7.5 2.6"/>
+    <path d="M26 27.5h12"/>
+    <path d="M32 5.2c1.3-2.8 5.4-1.7 5.4 1.2 0 2.3-3.4 4.3-5.4 5.8-2-1.5-5.4-3.5-5.4-5.8 0-2.9 4.1-4 5.4-1.2z"/></svg>`,
+  spark:`<svg viewBox="0 0 48 48" class="art" aria-hidden="true">
+    <path d="M24 6.5l4.8 9.7 10.7 1.6-7.8 7.5 1.9 10.7L24 31l-9.6 5 1.9-10.7-7.8-7.5 10.7-1.6z"/>
+    <circle cx="20.8" cy="20.5" r="1.4" class="sol"/><circle cx="27.2" cy="20.5" r="1.4" class="sol"/>
+    <path d="M21.8 24.3c1.3 1.2 3.1 1.2 4.4 0"/>
+    <path d="M17.6 23.6h2M28.4 23.6h2"/>
+    <path d="M40.5 33c.6 2.6 1.5 3.5 4.1 4.1-2.6.6-3.5 1.5-4.1 4.1-.6-2.6-1.5-3.5-4.1-4.1 2.6-.6 3.5-1.5 4.1-4.1z"/>
+    <path d="M7.5 30c.4 2 1.1 2.7 3.1 3.1-2 .4-2.7 1.1-3.1 3.1-.4-2-1.1-2.7-3.1-3.1 2-.4 2.7-1.1 3.1-3.1z"/></svg>`,
+  /* 依身分加的小配件：全部避開頭部與身體的輪廓線，也不碰右上角的蝴蝶結 */
+  accessory:{
+    "姊姊":`<path d="M19.4 31.8c.9 2.9 2.7 4.6 4.6 4.6s3.7-1.7 4.6-4.6"/><circle cx="24" cy="37.4" r="1.5"/>`,
+    "妹妹":`<circle cx="13.6" cy="9.9" r="1.9"/><circle cx="16.3" cy="12.6" r="1.9"/><circle cx="13.6" cy="15.3" r="1.9"/><circle cx="10.9" cy="12.6" r="1.9"/><circle cx="13.6" cy="12.6" r="1.15" class="sol"/>`,
+    "哥哥":`<circle cx="20.4" cy="19.4" r="2.8"/><circle cx="27.6" cy="19.4" r="2.8"/><path d="M23.2 19.4h1.6"/>`,
+    "弟弟":`<path d="M23.2 11.6c-.8-2.8.4-4.8 2.9-5.4-1.1 1.5-1.3 2.9-.6 4.2"/>`,
+    "爸爸":`<path d="M24 21.6c-1 1.5-3 1.7-4 .5M24 21.6c1 1.5 3 1.7 4 .5"/>`,
+    "媽媽":`<path d="M18.1 23.6l-1 2"/><circle cx="16.9" cy="26.8" r="1.3"/><path d="M29.9 23.6l1 2"/><circle cx="31.1" cy="26.8" r="1.3"/>`,
+    "42":`<path d="M20.6 30.4L24 34.4l3.4-4"/><text x="24" y="41.4" text-anchor="middle" style="font-size:6.6px;fill:var(--edge);stroke:none;font-weight:bold">42</text>`,
+    "戀人":`<path d="M13.4 11c.8-1.7 3-1 3 .7 0 1.4-1.9 2.6-3 3.4-1.1-.8-3-2-3-3.4 0-1.7 2.2-2.4 3-.7z"/>`,
+    "CP粉":`<path d="M37.5 18.2c1-2 3.6-1.2 3.6.8 0 1.7-2.2 3.1-3.6 4.1-1.4-1-3.6-2.4-3.6-4.1 0-2 2.6-2.8 3.6-.8z"/><path d="M40.8 25.4c.75-1.5 2.7-.9 2.7.6 0 1.25-1.65 2.3-2.7 3.05-1.05-.75-2.7-1.8-2.7-3.05 0-1.5 1.95-2.1 2.7-.6z"/>`,
+    "竹馬":`<path d="M10.5 30.6V21"/><path d="M10.5 20c1-3.4 2.6-4.6 4.2-3.6 1.3.9.7 2.6-4.2 3.6z"/><path d="M10.5 20c-3.4-1-4.6-2.6-3.6-4.2.9-1.3 2.6-.7 3.6 4.2z"/><path d="M10.5 20c-1 3.4-2.6 4.6-4.2 3.6-1.3-.9-.7-2.6 4.2-3.6z"/><path d="M10.5 20c3.4 1 4.6 2.6 3.6 4.2-.9 1.3-2.6.7-3.6-4.2z"/><circle cx="10.5" cy="20" r=".9" class="sol"/>`,
+    "老闆":`<path d="M22.4 30.6l1.6 2 1.6-2"/><path d="M24 32.6l-1.9 5.4 1.9 1.8 1.9-1.8z"/>`,
+    "朋友":`<path d="M35.8 18.2h5c1.1 0 2 .9 2 2v4.4c0 1.1-.9 2-2 2h-3.4l-2.8 2.6v-2.6h-.8c-1.1 0-2-.9-2-2v-4.4c0-1.1.9-2 2-2z"/><circle cx="36.2" cy="22.4" r=".8" class="sol"/><circle cx="38.3" cy="22.4" r=".8" class="sol"/><circle cx="40.4" cy="22.4" r=".8" class="sol"/>`
+  },
+  avatar(isAdmin,kind){
+    const acc=(!isAdmin&&kind&&this.accessory[kind])? this.accessory[kind] : "";
+    return `<svg viewBox="0 0 48 48" class="art" aria-hidden="true">
+      <circle cx="24" cy="24" r="21"/>
+      <circle cx="24" cy="19" r="7.5"/>
+      <path d="M9.5 39.5c2.4-6 8-9.5 14.5-9.5s12.1 3.5 14.5 9.5"/>
+      ${acc?`<g class="acc">${acc}</g>`:""}
+      ${isAdmin?`<g style="fill:#f6c9d8;stroke:#dda3b8;stroke-width:1.4">
+        <path d="M31.6 11.4c-3.2-2.7-6.3-.4-4.9 2.1 1.1 1.9 3.8 1.1 4.9-2.1z"/>
+        <path d="M31.6 11.4c3.2-2.7 6.3-.4 4.9 2.1-1.1 1.9-3.8 1.1-4.9-2.1z"/>
+        <circle cx="31.6" cy="11.9" r="1.3"/></g>`:``}
+    </svg>`;
+  }
+};
+
+/* 留言暱稱：OO 的 XX，兩個下拉選單；簡體模式下選項也顯示簡體 */
+const NAME_OO=["申晶㬊","金道勳","崔英宰","韓振","韓志薫","李炅潣","惟勳"];
+const NAME_XX=["姊姊","妹妹","哥哥","弟弟","爸爸","媽媽","42","戀人","竹馬","CP粉","老闆","朋友"];
+let LANG="t";
+T2S_PHRASE.m["惟勳"]="雕勋";           // 簡體圈的說法是雕勳
+T2S_PHRASE.m["姊姊"]="姐姐";
+if(T2S_PHRASE.max<2) T2S_PHRASE.max=2;
+function loc(s){ return LANG==="s"? toSimplified(String(s)) : String(s); }
+function nameSelect(id,arr,sel){
+  return `<select id="${id}">${arr.map(v=>`<option value="${esc(v)}"${v===sel?" selected":""}>${esc(loc(v))}</option>`).join("")}</select>`;
+}
+function namePicker(idOO,idXX){
+  return `<div class="name-pick">${nameSelect(idOO,NAME_OO)}<span>${loc("的")}</span>${nameSelect(idXX,NAME_XX)}</div>`;
+}
+
+const ICON={
+  play:`<svg viewBox="0 0 24 24" class="art ic fill" aria-hidden="true"><path d="M8 5.2l10.5 6.8L8 18.8z"/></svg>`,
+  left:`<svg viewBox="0 0 24 24" class="art ic" aria-hidden="true"><path d="M14.5 5.5 8 12l6.5 6.5"/></svg>`,
+  right:`<svg viewBox="0 0 24 24" class="art ic" aria-hidden="true"><path d="M9.5 5.5 16 12l-6.5 6.5"/></svg>`,
+  list:`<svg viewBox="0 0 24 24" class="art ic" aria-hidden="true"><path d="M9 7h11M9 12h11M9 17h11"/><circle cx="4.8" cy="7" r=".9" class="sol"/><circle cx="4.8" cy="12" r=".9" class="sol"/><circle cx="4.8" cy="17" r=".9" class="sol"/></svg>`
+};
+
+/* 全站繁簡：畫面渲染完後直接換文字節點；原文記在 ORIG 裡，切回繁體時還原 */
+const ORIG=new WeakMap();
+function textNodes(root){
+  const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{
+    acceptNode(n){ return (n.parentElement&&n.parentElement.closest(".no-simp"))?NodeFilter.FILTER_REJECT:NodeFilter.FILTER_ACCEPT; }});
+  const list=[]; while(w.nextNode()) list.push(w.currentNode);
+  return list;
+}
+function simplifyTree(root){
+  if(!root) return;
+  textNodes(root).forEach(n=>{
+    if(!ORIG.has(n)) ORIG.set(n,n.nodeValue);
+    const t=toSimplified(ORIG.get(n));
+    if(t!==n.nodeValue) n.nodeValue=t;
+  });
+  root.querySelectorAll("[placeholder]").forEach(el=>{
+    if(el.closest(".no-simp")) return;
+    if(el.dataset.ph===undefined) el.dataset.ph=el.placeholder;
+    el.placeholder=toSimplified(el.dataset.ph);
+  });
+  root.querySelectorAll("[title]").forEach(el=>{
+    if(el.closest(".no-simp")) return;
+    if(el.dataset.tt===undefined) el.dataset.tt=el.title;
+    el.title=toSimplified(el.dataset.tt);
+  });
+}
+function restoreTree(root){
+  if(!root) return;
+  textNodes(root).forEach(n=>{ if(ORIG.has(n)&&n.nodeValue!==ORIG.get(n)) n.nodeValue=ORIG.get(n); });
+  root.querySelectorAll("[placeholder]").forEach(el=>{ if(el.dataset.ph!==undefined) el.placeholder=el.dataset.ph; });
+  root.querySelectorAll("[title]").forEach(el=>{ if(el.dataset.tt!==undefined) el.title=el.dataset.tt; });
+}
+function themeButtons(){
+  const opt=[["auto","自動"],["light","淺色"],["dark","深色"]];
+  return opt.map(([v,t])=>`<button class="px-btn${THEME===v?" is-on":""}" data-theme-btn="${v}">${t}</button>`).join("");
+}
+document.addEventListener("click",e=>{
+  const b=e.target.closest("[data-theme-btn]"); if(!b) return;
+  THEME=b.getAttribute("data-theme-btn");
+  applyTheme(); $("#footTheme").innerHTML=themeButtons();
+  store.set("sese_theme",THEME);
+});
+function langButtons(){
+  return `<button class="px-btn${LANG==="t"?" is-on":""}" data-lang="t">繁體</button>`
+       + `<button class="px-btn${LANG==="s"?" is-on":""}" data-lang="s">简体</button>`;
+}
+document.addEventListener("click",e=>{
+  const b=e.target.closest("[data-lang]"); if(!b) return;
+  const l=b.getAttribute("data-lang");
+  if(l===LANG) return;
+  LANG=l; render(); store.set("sese_lang",l);
+});
+
+/* 站內連結 */
+document.addEventListener("click",e=>{ const g=e.target.closest("[data-go]"); if(g){ e.preventDefault(); location.hash=g.getAttribute("data-go"); } });
+document.addEventListener("keydown",e=>{ if(e.key!=="Enter") return;
+  const g=e.target.closest&&e.target.closest("[data-go]"); if(g){ e.preventDefault(); location.hash=g.getAttribute("data-go"); } });
+
+/* =========================================================
+   5. 文章資料
+   ========================================================= */
+function pixelCover(seed){
+  const tones=["#dcecf8","#c6e0f2","#eef6fc","#b7d7ee"]; let cells="";
+  for(let y=0;y<9;y++) for(let x=0;x<16;x++){
+    const n=(x*7+y*13+seed*29)%4;
+    cells+=`<rect x="${x}" y="${y}" width="1" height="1" fill="${tones[n]}"/>`;
+  }
+  return "data:image/svg+xml;utf8,"+encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 9" shape-rendering="crispEdges">${cells}</svg>`);
+}
+const SEED_POSTS=[
+  { id:"seed-1", title:"雨落在你說晚安的那一秒",
+    slogan:"他從不說想念，只說「你今天有好好吃飯嗎」。",
+    cover:pixelCover(1), media:{value:""},
+    series:"雨天的三公分", chapter:"1", status:"連載中", tags:["校園","甜文","青梅竹馬"],
+    html:`<p>申晶㬊把傘往旁邊挪了三公分，剛好把金道勳整個人罩進去，自己的右肩就這樣淋著。</p>
+<blockquote>「你肩膀濕了。」<br>「沒有。」</blockquote>
+<p>金道勳沒有再說話，只是安靜地往他那邊靠近了一點點，近到兩個人的手背偶爾會擦過。</p>
+<div class="callout"><p>這是一篇示範文章，你可以在管理頁刪掉它，換上自己的作品。</p></div>`,
+    created:Date.now()-86400000*3 },
+  { id:"seed-2", title:"你把名字寫在我的筆記本上",
+    slogan:"那頁後來被我撕下來，夾進了每一本讀過的書裡。",
+    cover:pixelCover(2), media:{value:""},
+    series:"雨天的三公分", chapter:"2", status:"連載中", tags:["校園","甜文"],
+    html:`<p>後來申晶㬊才知道，那本筆記本的最後一頁，寫滿了同一個名字。</p>
+<div class="white"><p>白底區塊可以放註記、時間軸，或是你的碎碎念。</p></div>`,
+    created:Date.now()-86400000*10 }
+];
+
+let POSTS=[], HIDDEN=[], IS_ADMIN=false, MY_UID="";
+let THEME="auto", READ="m", TAGFILTER="", BOOTING=true;
+
+function resolveTheme(){
+  if(THEME==="dark"||THEME==="light") return THEME;
+  try{ return window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"; }catch(e){ return "light"; }
+}
+function applyTheme(){ document.documentElement.dataset.theme=resolveTheme(); }
+try{
+  const mq=window.matchMedia("(prefers-color-scheme: dark)");
+  (mq.addEventListener?mq.addEventListener.bind(mq,"change"):mq.addListener.bind(mq))(()=>{ if(THEME==="auto") applyTheme(); });
+}catch(e){}
+
+/* 字數：中文字與英文單字都算 */
+function wordCount(p){
+  const t=plainText2(p).replace(/\s+/g,"");
+  return [...t].length;
+}
+function plainText2(p){
+  const body=p.html||(p.blocks||[]).map(b=>b.html).join(" ");
+  return String(body).replace(/<[^>]+>/g," ");
+}
+function fmtCount(n){ return n>=10000? (n/10000).toFixed(1)+" 萬字" : n>=1000? Math.round(n/100)/10+" 千字" : n+" 字"; }
+
+/* 系列：把同一個系列的章節收成一組 */
+function seriesOf(p){ return (p.series||"").trim(); }
+function chapterNo(p){ const n=parseFloat(p.chapter); return isNaN(n)?0:n; }
+function groupPosts(list){
+  const groups=[], byName=new Map();
+  list.forEach(p=>{
+    const sname=seriesOf(p);
+    if(!sname){ groups.push({single:true,post:p,title:p.title,slogan:p.slogan,cover:p.cover,
+      tags:p.tags||[],status:p.status||"",words:wordCount(p),created:p.created||0}); return; }
+    if(!byName.has(sname)){
+      const g={single:false,series:sname,chapters:[],title:sname,cover:"",slogan:"",tags:[],status:"",words:0,created:0};
+      byName.set(sname,g); groups.push(g);
+    }
+    byName.get(sname).chapters.push(p);
+  });
+  groups.forEach(g=>{
+    if(g.single) return;
+    g.chapters.sort((a,b)=>chapterNo(a)-chapterNo(b)||(a.created||0)-(b.created||0));
+    const first=g.chapters[0];
+    g.cover=first.cover; g.slogan=first.slogan||"";
+    g.words=g.chapters.reduce((n,c)=>n+wordCount(c),0);
+    g.created=Math.max(...g.chapters.map(c=>c.created||0));
+    const tags=new Set(); g.chapters.forEach(c=>(c.tags||[]).forEach(t=>tags.add(t)));
+    g.tags=[...tags];
+    g.status=g.chapters[g.chapters.length-1].status||"";
+    g.post=first;
+  });
+  return groups.sort((a,b)=>b.created-a.created);
+}
+function chaptersOf(name){
+  return POSTS.filter(p=>seriesOf(p)===name).sort((a,b)=>chapterNo(a)-chapterNo(b)||(a.created||0)-(b.created||0));
+}
+function allTags(){
+  const m=new Map();
+  POSTS.forEach(p=>(p.tags||[]).forEach(t=>m.set(t,(m.get(t)||0)+1)));
+  return [...m.keys()].sort();
+}
+
+async function loadPosts(){
+  const fetchPosts=(async()=>{
+    try{
+      let signal;
+      if(typeof AbortController!=="undefined"){
+        const c=new AbortController(); signal=c.signal; setTimeout(()=>c.abort(),2000);
+      }
+      const r=await fetch("posts.json",{cache:"no-store",signal});
+      if(r.ok) return await r.json();
+    }catch(e){}
+    return null;
+  })();
+  // 網路卡住時最多等兩秒就放行，不讓畫面一直空著
+  const filePromise=Promise.race([fetchPosts,new Promise(res=>setTimeout(()=>res(null),2000))]);
+  // 三件事同時做，不要排隊等
+  const [filePosts,localPosts,hidden]=await Promise.all([filePromise,getJSON("sese_posts",[]),getJSON("sese_hidden",[])]);
+  HIDDEN=hidden;
+  const base=Array.isArray(filePosts)?filePosts:SEED_POSTS;
+  const map=new Map();
+  base.forEach(p=>map.set(p.id,p));
+  localPosts.forEach(p=>map.set(p.id,p));
+  POSTS=[...map.values()].filter(p=>!HIDDEN.includes(p.id)).sort((a,b)=>(b.created||0)-(a.created||0));
+}
+
+/* =========================================================
+   6. 音樂：YouTube / bilibili / mp3
+   ========================================================= */
+function parseMedia(raw){
+  const u=String(raw||"").trim();
+  if(!u) return null;
+  if(/^data:audio\//i.test(u)||/\.(mp3|m4a|wav|ogg)(\?|$)/i.test(u)) return {kind:"audio",src:u,page:""};
+  const list=(u.match(/[?&]list=([A-Za-z0-9_-]+)/)||[])[1];
+  const yt=(u.match(/(?:youtube\.com\/(?:watch\?(?:[^#]*&)?v=|embed\/|shorts\/|live\/|v\/)|youtu\.be\/)([A-Za-z0-9_-]{6,})/)||[])[1]
+        || (/^[A-Za-z0-9_-]{11}$/.test(u)? u : "");
+  if(/youtube\.com|youtu\.be/i.test(u)||yt){
+    if(yt) return {kind:"frame",src:`https://www.youtube.com/embed/${yt}?autoplay=1&playsinline=1&rel=0&loop=1&playlist=${yt}${list?`&list=${list}`:""}`,page:u};
+    if(list) return {kind:"frame",src:`https://www.youtube.com/embed/videoseries?list=${list}&autoplay=1&playsinline=1&loop=1`,page:u};
+  }
+  if(/b23\.tv/i.test(u)) return {kind:"note",src:"",page:u,
+    msg:"這是 bilibili 的短網址，請改貼含 BV 開頭編號的完整網址。"};
+  const bv=(u.match(/(BV[0-9A-Za-z]{8,12})/)||[])[1];
+  const av=(u.match(/\/av(\d+)/i)||[])[1];
+  if(bv) return {kind:"frame",src:`https://player.bilibili.com/player.html?bvid=${bv}&autoplay=1&high_quality=1&danmaku=0`,page:u};
+  if(av) return {kind:"frame",src:`https://player.bilibili.com/player.html?aid=${av}&autoplay=1&high_quality=1&danmaku=0`,page:u};
+  if(/^https?:\/\//i.test(u)) return {kind:"audio",src:u,page:u};
+  return null;
+}
+const dock={
+  el:$("#dock"), current:null,
+  open(title,raw){
+    const m=parseMedia(raw);
+    if(!m) return toast("這篇還沒有配樂，或是連結看起來不太對");
+    if(m.kind==="note") return toast(m.msg);
+    $("#dockTitle").textContent=title;
+    if(this.current===m.src&&this.el.classList.contains("on")){ this.el.classList.remove("mini"); syncChev(); return; }
+    this.current=m.src;
+    const body=$("#dockBody");
+    if(m.kind==="frame"){
+      const boxed = (window.self!==window.top);
+      body.innerHTML=`<iframe src="${esc(m.src)}" allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen playsinline loading="eager"></iframe>
+        <p class="fb">${boxed?"這個預覽環境會擋掉外部影片，正式網站上才播得動。<br>":""}
+        <a href="${esc(m.page)}" target="_blank" rel="noopener">在原網站開啟</a></p>`;
+      if(location.protocol==="file:")
+        toast("直接開啟檔案時 YouTube 會擋掉播放，上傳到網站後就正常了");
+    }else{
+      body.innerHTML=`<audio controls loop playsinline preload="auto" src="${esc(m.src)}"></audio>`;
+      const a=body.querySelector("audio"); const pr=a.play();
+      if(pr&&pr.catch) pr.catch(()=>toast("手機需要你再按一次播放鍵"));
+    }
+    this.el.classList.add("on"); this.el.classList.remove("mini"); syncChev();
+  },
+  close(){ this.el.classList.remove("on"); $("#dockBody").innerHTML=""; this.current=null; }
+};
+$("#toTop").onclick=()=>window.scrollTo({top:0,behavior:"smooth"});
+window.addEventListener("scroll",()=>{ $("#toTop").classList.toggle("on", window.scrollY>500); },{passive:true});
+$("#dockClose").onclick=()=>dock.close();
+function syncChev(){
+  const mini=dock.el.classList.contains("mini"), b=$("#dockMini");
+  $("#dockChev").innerHTML = mini? `<path d="M6 14l6-6 6 6"/>` : `<path d="M6 10l6 6 6-6"/>`;
+  b.title = mini? "展開" : "收合"; b.setAttribute("aria-label",b.title);
+}
+$("#dockMini").onclick=()=>{ dock.el.classList.toggle("mini"); syncChev(); };
+
+/* =========================================================
+   7. 路由
+   ========================================================= */
+window.addEventListener("hashchange",render);
+$("#qbtn").onclick=()=>{ location.hash="#/"; render(); };
+$("#q").addEventListener("input",()=>{ if(location.hash!=="#/"&&location.hash!=="") location.hash="#/"; else render(); });
+$("#q").addEventListener("keydown",e=>{ if(e.key==="Enter"){ location.hash="#/"; render(); }});
+
+/* 返回：自己記錄站內路徑，不用 history.back()（在嵌入環境會退出整個頁面變白屏） */
+let NAV=[], NAV_BACK=false;
+function trackNav(h){
+  if(NAV_BACK){ NAV_BACK=false; return; }
+  if(NAV[NAV.length-1]!==h) NAV.push(h);
+  if(NAV.length>60) NAV.shift();
+}
+$("#backBtn").onclick=()=>{
+  let target="#/";
+  if(NAV.length>1){ NAV.pop(); target=NAV[NAV.length-1]||"#/"; }
+  goTo(target);
+};
+/* 不新增歷史紀錄地換頁；replaceState 被擋下時才退回 hash 導覽 */
+function goTo(h){
+  if((location.hash||"#/")===h){ render(); return; }
+  try{
+    if(history.replaceState){ NAV_BACK=true; history.replaceState(null,"",h); render(); return; }
+  }catch(e){}
+  NAV_BACK=true; location.hash=h;
+}
+
+async function render(){
+  try{ await renderInner(); }
+  catch(e){
+    $("#app").innerHTML=`<div class="px-box empty" style="margin-top:40px">這一頁載入時出了點狀況。<br>
+      <span data-go="#/" style="text-decoration:underline">回首頁</span></div>`;
+  }
+}
+async function renderInner(){
+  clearTimeout(draftT);                      // 換頁時取消待寫入的草稿
+  const tt=$("#toTop"); if(tt) tt.classList.remove("on");
+  const h=location.hash||"#/";
+  trackNav(h);
+  const isAdminPage=h.startsWith("#/admin");
+  $("#hero").style.display = h==="#/" ? "" : "none";
+  $("#backBtn").style.display = h==="#/" ? "none" : "flex";
+  $("#footArt").innerHTML=ART.pair;
+  $("#heroLang").innerHTML=langButtons();
+  $("#footLang").innerHTML=langButtons();
+  $("#footTheme").innerHTML=themeButtons();
+  window.scrollTo(0,0);
+  requestAnimationFrame(()=>window.scrollTo(0,0));
+  setTimeout(()=>window.scrollTo(0,0),60);
+  if(BOOTING&&h.startsWith("#/post/")){
+    $("#app").innerHTML=`<div class="px-box empty" style="margin-top:40px">載入中…</div>`;
+  }
+  else if(h.startsWith("#/post/")) await viewPost(decodeURIComponent(h.slice(7)));
+  else if(isAdminPage) await viewAdmin();
+  else await viewHome();
+
+  document.body.classList.toggle("simp", LANG==="s" && !isAdminPage);
+  const fixed=[$("#hero"),document.querySelector("footer"),document.querySelector(".topbar")];
+  if(LANG==="s" && !isAdminPage){
+    simplifyTree($("#app"));
+    fixed.forEach(simplifyTree);
+  }else{
+    fixed.forEach(restoreTree);
+  }
+}
+
+/* =========================================================
+   8. 首頁
+   ========================================================= */
+const NOTICE=[
+ '你可以叫我碎碎、sese、或是各種你想叫的名字。如果你會台語的話，唸我的脆帳號名會有小驚喜！',
+ '這裡的文章CP只會有申晶㬊和金道勳，不拆也不逆。過去現在未來也都會只有他們！',
+ '設置了可評論功能，喜歡的話可以多多留下你想說的話，我會很開心，還會給你很多愛心嘿嘿。',
+ '生活滿滿只能抽空做飯，文筆不細緻甚至有點糟，想到什麼寫什麼，不是專業作家也不靠寫這些維生，只是個普通的雕勳民，所以不接受公審批評，不喜歡滑掉就好啦，你開心我開心！(我很玻璃心，不要罵我呀..)',
+ '每篇文章設定了繁體與簡體的兩種版本，內容不會有差異，只是希望大家都能用自己看起來最舒服的文字閱讀:)',
+ '我喜歡邊看文章邊聽音樂，如果你也喜歡的話，可以點點文章前的影片再開始閱讀，都是我很喜歡的playlist><！',
+ '我在threads上有一個讓我碎碎念的帳號，追蹤的話之後也比較不會迷路哦！<a href="https://www.threads.com/@seseliam_" target="_blank" rel="noopener">傳送門🚪</a>'
+];
+function statusBadge(st){
+  if(!st) return "";
+  return `<span class="badge${st==="完結"?" done":""}">${esc(st)}</span>`;
+}
+function viewHome(){
+  const kw=$("#q").value.trim();
+  let list=POSTS;
+  if(TAGFILTER) list=list.filter(p=>(p.tags||[]).includes(TAGFILTER));
+  if(kw) list=list.filter(p=>plainText(p).includes(kw));
+
+  // 搜尋時列出單篇（才找得到某一章），平常以系列為單位
+  const groups = kw ? list.map(p=>({single:true,post:p,title:p.title,slogan:p.slogan,cover:p.cover,
+        tags:p.tags||[],status:p.status||"",words:wordCount(p),created:p.created||0,
+        chapterLabel:seriesOf(p)?`${seriesOf(p)}・第 ${p.chapter||"?"} 章`:""}))
+    : groupPosts(list);
+
+  const cards = BOOTING ? `<div class="px-box empty">載入中…</div>`
+    : groups.length ? `<div class="grid">${groups.map(g=>{
+      const target=g.single? g.post : g.chapters[0];
+      const chip=g.single? (g.chapterLabel?`<span class="dim">${esc(g.chapterLabel)}</span>`:"")
+                         : `<span class="dim">共 ${g.chapters.length} 章</span>`;
+      return `<div class="post-card" role="link" tabindex="0" data-go="#/post/${encodeURIComponent(target.id)}">
+        <div class="cover"><img src="${esc(g.cover||pixelCover(3))}" alt=""></div>
+        <div class="meta">
+          <div class="t">${esc(g.title)}</div>
+          <div class="s">${esc(g.slogan||"")}</div>
+          <div class="card-meta">
+            ${statusBadge(g.status)}
+            ${(g.tags||[]).slice(0,3).map(t=>`<span class="tag">${esc(t)}</span>`).join("")}
+            ${chip}<span class="dim">${fmtCount(g.words)}</span>
+          </div>
+        </div>
+      </div>`;}).join("")}</div>`
+    : `<div class="px-box empty">${ART.spark}沒有符合的文章，換個關鍵字或標籤試試。</div>`;
+
+  const tags=allTags();
+  const tagBar = tags.length? `<div class="tag-bar">
+      <button class="${TAGFILTER?"":"is-on"}" data-tag="">全部</button>
+      ${tags.map(t=>`<button class="${TAGFILTER===t?"is-on":""}" data-tag="${esc(t)}">${esc(t)}</button>`).join("")}
+    </div>` : "";
+
+  const notice=(kw||TAGFILTER)? "" : `<section class="px-box card notice">
+      <h2>使用須知</h2><div class="px-rule" style="max-width:120px;margin-top:10px"></div>
+      <ol>${NOTICE.map(n=>`<li>${n}</li>`).join("")}</ol></section>`;
+
+  $("#app").innerHTML=`${notice}
+    <section><div class="sec-head">${ART.toast}<h2>文章</h2>
+      <span>${BOOTING?"":kw?`搜尋「${esc(kw)}」· ${groups.length} 筆`:TAGFILTER?`標籤「${esc(TAGFILTER)}」· ${groups.length} 筆`:`${groups.length} 部作品`}</span></div>
+      ${tagBar}${cards}</section>
+    <div class="divider-art"><div class="px-rule"></div>${ART.pair}<div class="px-rule"></div></div>`;
+  $("#heroArt").innerHTML=ART.brother+ART.toast+ART.spark;
+
+  $$("[data-tag]").forEach(b=>b.onclick=()=>{ TAGFILTER=b.getAttribute("data-tag"); render(); });
+}
+
+/* =========================================================
+   9. 文章頁
+   ========================================================= */
+function postHTML(p){
+  if(p.html) return sanitizeRich(p.html);
+  return (p.blocks||[]).map(b=>{
+    const c=sanitizeRich(b.html);
+    if(b.t==="h") return `<h2>${c}</h2>`;
+    if(b.t==="quote") return `<blockquote>${c}</blockquote>`;
+    if(b.t==="callout") return `<div class="callout">${c}</div>`;
+    if(b.t==="gray") return `<div class="white">${c}</div>`;
+    return `<p>${c}</p>`;
+  }).join("");
+}
+async function viewPost(id){
+  const p=POSTS.find(x=>x.id===id);
+  if(!p){ $("#app").innerHTML=`<div class="px-box empty" style="margin-top:40px">找不到這篇文章。<br><span data-go="#/" style="text-decoration:underline">回首頁</span></div>`; return; }
+
+  const sname=seriesOf(p);
+  const chaps=sname?chaptersOf(sname):[];
+  let prev,next;
+  if(sname){
+    const i=chaps.findIndex(c=>c.id===p.id);
+    prev=chaps[i-1]; next=chaps[i+1];
+  }else{
+    const solo=POSTS.filter(x=>!seriesOf(x));
+    const i=solo.findIndex(x=>x.id===p.id);
+    prev=solo[i+1]; next=solo[i-1];
+  }
+  const mediaRaw=(p.media&&(p.media.value||p.media.url))||p.mediaUrl||"";
+  const words=wordCount(p);
+
+  const toc = chaps.length>1 ? `<details class="toc"${chaps.length<=12?" open":""}>
+      <summary>目錄・${esc(sname)}（共 ${chaps.length} 章）</summary>
+      <ol>${chaps.map(c=>`<li class="${c.id===p.id?"now":""}">
+        <span data-go="#/post/${encodeURIComponent(c.id)}">${esc(c.title)}</span></li>`).join("")}</ol>
+    </details>` : "";
+
+  $("#app").innerHTML=`
+    <article>
+      <div class="post-cover"><img src="${esc(p.cover||pixelCover(3))}" alt=""></div>
+      <div class="post-head">
+        ${sname?`<p class="slogan" style="margin-bottom:8px">${esc(sname)}・第 ${esc(p.chapter||"?")} 章</p>`:""}
+        <h1 id="pTitle">${esc(p.title)}</h1>
+        <p class="slogan" id="pSlogan">${esc(p.slogan||"")}</p>
+        <div class="post-meta">
+          ${statusBadge(p.status)}
+          ${(p.tags||[]).map(t=>`<span class="tag">${esc(t)}</span>`).join("")}
+          <span class="dim" style="font-size:.72rem;color:var(--soft);font-style:italic">${fmtCount(words)}</span>
+        </div>
+      </div>
+      <div class="post-tools">
+        <button class="px-btn" id="playBtn">${ICON.play}播放配樂</button>
+        <button class="px-btn slim" data-readsize="s">小</button>
+        <button class="px-btn slim" data-readsize="m">中</button>
+        <button class="px-btn slim" data-readsize="l">大</button>
+        ${IS_ADMIN?`<button class="px-btn" id="delPost">刪除這篇（管理員）</button>`:""}
+      </div>
+      ${toc}
+      <div id="resumeSlot"></div>
+      <div class="rich" id="pBody" style="margin-top:26px">${postHTML(p)}</div>
+      <div class="kudos" id="kudos"></div>
+      <div class="divider-art"><div class="px-rule"></div>${ART.spark}<div class="px-rule"></div></div>
+      <nav class="post-nav">
+        <span>${prev?`<button class="px-btn" data-go="#/post/${encodeURIComponent(prev.id)}">${ICON.left}${esc(prev.title.slice(0,12))}</button>`:""}</span>
+        <span>${next?`<button class="px-btn" data-go="#/post/${encodeURIComponent(next.id)}">${esc(next.title.slice(0,12))}${ICON.right}</button>`:""}</span>
+      </nav>
+      <section class="comments">
+        <h3>留言</h3><div class="px-rule" style="max-width:80px;margin-top:8px"></div>
+        <div class="cmt-form">
+          <div class="row" id="nameRow">${IS_ADMIN
+            ? `<input id="cName" type="text" value="${esc(ADMIN_NAME)}" readonly>`
+            : namePicker("cOO","cXX")}</div>
+          <textarea id="cText" rows="3" placeholder="想對這篇說的話…" maxlength="800"></textarea>
+          <div class="cmt-warn" id="cWarn"></div>
+          <div class="rowbtns"><button class="px-btn" id="cSend">送出留言</button>
+</div>
+        </div>
+        <div id="cList"></div>
+      </section>
+    </article>`;
+
+  $$("[data-readsize]").forEach(b=>{
+    b.classList.toggle("is-on", b.getAttribute("data-readsize")===READ);
+    b.onclick=()=>{ READ=b.getAttribute("data-readsize"); document.body.dataset.read=READ;
+      $$("[data-readsize]").forEach(x=>x.classList.toggle("is-on",x.getAttribute("data-readsize")===READ));
+      store.set("sese_read",READ); };
+  });
+
+  $("#playBtn").onclick=()=>{ if(!mediaRaw) return toast("這篇沒有配樂喔，安靜地看也很好 ♪");
+    dock.open(p.title,mediaRaw); };
+
+  if(IS_ADMIN){
+    let armed=false;
+    $("#delPost").onclick=async(e)=>{
+      if(!armed){ armed=true; e.target.textContent="再按一次確定刪除"; setTimeout(()=>{armed=false;e.target.textContent="刪除這篇（管理員）";},4000); return; }
+      await deletePost(p.id); toast("已刪除這篇文章"); location.hash="#/";
+    };
+  }
+
+  await setupKudos(p.id);
+  setupComments(p.id);
+  setupProgress(p.id);
+}
+
+/* --- 愛心 --- */
+const HEART=`<svg viewBox="0 0 24 24" class="art"><path d="M12 20.5C7.5 17.3 3.5 14.2 3.5 10.2 3.5 7.3 5.8 5.2 8.4 5.2c1.6 0 3 .8 3.6 2.2.6-1.4 2-2.2 3.6-2.2 2.6 0 4.9 2.1 4.9 5 0 4-4 7.1-8.5 10.3z"/></svg>`;
+async function setupKudos(postId){
+  const box=$("#kudos"); if(!box) return;
+  const kKey="sese_kudos_"+postId, mKey="sese_kudos_me_"+postId;
+  const [nv,mv]=await Promise.all([store.get(kKey),store.get(mKey)]);
+  let n=parseInt(nv||"0",10); if(isNaN(n)) n=0;
+  let mine=mv==="1";
+  const draw=()=>{
+    box.innerHTML=`<button class="${mine?"on":""}" id="kBtn">${HEART}<span>${mine?"已給愛心":"給這篇愛心"}</span>
+      <b style="font-size:.95rem">${n}</b></button>
+`;
+    $("#kBtn").onclick=()=>{
+      mine=!mine; n=Math.max(0,n+(mine?1:-1));
+      draw();                                   // 先反應，再背景寫入
+      if(mine) toast("收到你的愛心了，謝謝 ♡");
+      store.set(kKey,String(n)); store.set(mKey,mine?"1":"0");
+    };
+  };
+  draw();
+}
+
+/* --- 閱讀進度 --- */
+let progT=null, progHandler=null;
+function setupProgress(postId){
+  const key="sese_pos_"+postId;
+  if(progHandler){ window.removeEventListener("scroll",progHandler); progHandler=null; }
+  const maxScroll=()=>Math.max(1,document.body.scrollHeight-window.innerHeight);
+  store.get(key).then(v=>{
+    const r=parseFloat(v||"0");
+    if(!(r>0.06&&r<0.92)) return;
+    const slot=$("#resumeSlot"); if(!slot) return;
+    slot.innerHTML=`<div class="resume"><span class="grow">上次讀到大約 ${Math.round(r*100)}%，要接續嗎？</span>
+      <button class="px-btn slim" id="resumeGo">接續閱讀</button>
+      <button class="px-btn slim" id="resumeNo">從頭開始</button></div>`;
+    $("#resumeGo").onclick=()=>{ window.scrollTo({top:r*maxScroll(),behavior:"smooth"}); slot.innerHTML=""; };
+    $("#resumeNo").onclick=()=>{ slot.innerHTML=""; store.set(key,"0"); };
+  });
+  progHandler=()=>{
+    const t=$("#toTop"); if(t) t.classList.toggle("on", window.scrollY>500);
+    clearTimeout(progT);
+    progT=setTimeout(()=>{ if(location.hash.includes(postId)) store.set(key,String(window.scrollY/maxScroll())); },600);
+  };
+  window.addEventListener("scroll",progHandler,{passive:true});
+}
+
+async function deletePost(id){
+  const [local,hidden]=await Promise.all([getJSON("sese_posts",[]),getJSON("sese_hidden",[])]);
+  const left=local.filter(p=>p.id!==id);
+  if(left.length!==local.length) await setJSON("sese_posts",left);
+  if(!hidden.includes(id)){ hidden.push(id); await setJSON("sese_hidden",hidden); }
+  await loadPosts();
+}
+
+/* =========================================================
+   10. 留言（回覆・編輯・刪除）
+   ========================================================= */
+const CMT_CACHE={};
+let COMMENTS_API=null;
+function setupComments(postId){
+  const key="sese_cmt_"+postId;
+  const list=$("#cList"), warn=$("#cWarn");
+
+  async function all(){
+    if(!CMT_CACHE[key]){ const v=await getJSON(key,[]); if(!CMT_CACHE[key]) CMT_CACHE[key]=v; }
+    return CMT_CACHE[key];
+  }
+  function cached(){ return CMT_CACHE[key]||[]; }
+  function save(arr){
+    CMT_CACHE[key]=arr;      // 先更新畫面，寫入放到背景
+    draw();
+    setJSON(key,arr).then(ok=>{
+      if(!ok){ warn.textContent="留言顯示出來了，但這次沒能保存，重新整理後可能會消失。"; warn.classList.add("on"); }
+    });
+    return true;
+  }
+
+  function cmtNode(c,arr){
+    const mine=c.uid===MY_UID;
+    const canEdit=mine;
+    const canDel=mine||IS_ADMIN;
+    const replies=arr.filter(x=>x.parent===c.id);
+    return `<div class="cmt" data-id="${c.id}">
+      <div class="avt">${ART.avatar(!!c.admin, String(c.name||"").split("的")[1]||"")}</div>
+      <div class="cbody">
+        <div><span class="who">${esc(loc(c.name||"匿名"))}</span><span class="when">${fmtTime(c.at)}${c.edited?"・已編輯":""}</span></div>
+        <p class="what">${esc(c.text)}</p>
+        <div class="cacts">
+          ${c.parent?"":`<button data-act="reply" data-id="${c.id}">回覆</button>`}
+          ${canEdit?`<button data-act="edit" data-id="${c.id}">編輯</button>`:""}
+          ${canDel?`<button data-act="del" data-id="${c.id}">刪除${(!mine&&IS_ADMIN)?"（管理）":""}</button>`:""}
+        </div>
+        <div class="slot" data-slot="${c.id}"></div>
+        ${replies.length?`<div class="replies">${replies.map(r=>cmtNode(r,arr)).join("")}</div>`:""}
+      </div></div>`;
+  }
+  async function draw(){
+    const arr=await all();
+    const tops=arr.filter(c=>!c.parent);
+    list.innerHTML=tops.length? tops.map(c=>cmtNode(c,arr)).join("")
+      : `<p class="hint">還沒有留言，來說第一句話吧。</p>`;
+    if(LANG==="s") simplifyTree(list);
+  }
+
+  list.onclick=e=>{
+    const b=e.target.closest("button[data-act]"); if(!b) return;
+    const id=b.dataset.id, act=b.dataset.act;
+    const arr=cached(); const c=arr.find(x=>x.id===id); if(!c) return;
+    const slot=list.querySelector(`[data-slot="${id}"]`);
+
+    if(act==="del"){
+      if(b.dataset.armed!=="1"){ b.dataset.armed="1"; b.textContent="確定刪除？";
+        setTimeout(()=>{ if(b.isConnected){b.dataset.armed="0"; draw();} },4000); return; }
+      save(arr.filter(x=>x.id!==id&&x.parent!==id)); return;
+    }
+    if(act==="edit"){
+      slot.innerHTML=`<div class="inline-form">
+        <textarea rows="3" maxlength="800">${esc(c.text)}</textarea>
+        <div class="cmt-warn"></div>
+        <div class="row"><button class="px-btn slim" data-ok="1">儲存</button><button class="px-btn slim" data-cancel="1">取消</button></div></div>`;
+      if(LANG==="s") simplifyTree(slot);
+      const ta=slot.querySelector("textarea"), w=slot.querySelector(".cmt-warn");
+      slot.querySelector("[data-cancel]").onclick=()=>slot.innerHTML="";
+      slot.querySelector("[data-ok]").onclick=()=>{
+        const res=checkComment(ta.value.trim());
+        if(!res.ok){ w.textContent=res.why; w.classList.add("on"); return; }
+        c.text=ta.value.trim(); c.edited=true; save(arr); toast("已更新留言");
+      };
+      return;
+    }
+    if(act==="reply"){
+      slot.innerHTML=`<div class="inline-form">
+        ${IS_ADMIN?`<input type="text" value="${esc(ADMIN_NAME)}" readonly>`:namePicker("rOO"+c.id,"rXX"+c.id)}
+        <textarea rows="2" maxlength="800" placeholder="回覆 ${esc(loc(c.name||"匿名"))}…"></textarea>
+        <div class="cmt-warn"></div>
+        <div class="row"><button class="px-btn slim" data-ok="1">送出回覆</button><button class="px-btn slim" data-cancel="1">取消</button></div></div>`;
+      if(LANG==="s") simplifyTree(slot);
+      const ta=slot.querySelector("textarea"), w=slot.querySelector(".cmt-warn");
+      const sels=slot.querySelectorAll("select");
+      slot.querySelector("[data-cancel]").onclick=()=>slot.innerHTML="";
+      slot.querySelector("[data-ok]").onclick=()=>{
+        const res=checkComment(ta.value.trim());
+        if(!res.ok){ w.textContent=res.why; w.classList.add("on"); return; }
+        arr.push({id:uid(),uid:MY_UID,
+          name:IS_ADMIN?ADMIN_NAME:`${sels[0].value}的${sels[1].value}`,
+          text:ta.value.trim(),at:Date.now(),parent:c.id,admin:IS_ADMIN});
+        save(arr); toast("回覆完成");
+      };
+    }
+  };
+
+  COMMENTS_API={draw};
+  $("#cSend").onclick=async()=>{
+    const text=$("#cText").value.trim();
+    const res=checkComment(text);
+    if(!res.ok){ warn.textContent=res.why; warn.classList.add("on"); return; }
+    warn.classList.remove("on");
+    const arr=await all();
+    arr.unshift({id:uid(),uid:MY_UID,
+      name:IS_ADMIN?ADMIN_NAME:`${$("#cOO").value}的${$("#cXX").value}`,
+      text,at:Date.now(),parent:null,admin:IS_ADMIN});
+    save(arr);
+    $("#cText").value=""; $("#cText").blur();
+    try{ if(list.scrollIntoView) list.scrollIntoView({block:"start",behavior:"smooth"}); }catch(e){}
+    toast("留言完成，愛心給你 ♡");
+  };
+  draw();
+}
+
+/* =========================================================
+   11. 管理：Word 式編輯器 + 草稿 + 預覽
+   ========================================================= */
+async function viewAdmin(){
+  if(!IS_ADMIN){
+    $("#app").innerHTML=`<section class="px-box card" style="max-width:420px;margin:48px auto">
+      <h2>管理</h2><div class="px-rule" style="max-width:80px;margin:10px 0 20px"></div>
+      <div class="label">密碼</div><input id="pw" type="password" placeholder="輸入密碼">
+      <div class="rowbtns" style="margin-top:14px"><button class="px-btn" id="pwBtn">進入</button></div>
+      <p class="hint" style="margin-top:16px">這是碎碎上傳文章的地方，你只需要等待碎碎上傳就好啦！</p></section>`;
+    const go=async()=>{ if($("#pw").value===ADMIN_PASSWORD){ IS_ADMIN=true; await store.set("sese_admin","1"); viewAdmin(); } else toast("密碼不對"); };
+    $("#pwBtn").onclick=go;
+    $("#pw").addEventListener("keydown",e=>{ if(e.key==="Enter") go(); });
+    return;
+  }
+
+  const [mine,draft]=await Promise.all([getJSON("sese_posts",[]),getJSON("sese_draft",null)]);
+  $("#app").innerHTML=`
+    <section class="px-box card" style="margin-top:36px">
+      <h2>新增文章</h2><div class="px-rule" style="max-width:80px;margin:10px 0 22px"></div>
+      <div class="admin-grid">
+        <div class="draft-bar" id="draftBar">
+          <span id="draftMsg">草稿會自動保存</span>
+          <button class="px-btn slim" id="draftSave">立刻存草稿</button>
+          <button class="px-btn slim" id="draftClear">清除草稿</button>
+        </div>
+        <div>
+          <div class="label">封面圖（建議 16:9，支援 iPhone 的 HEIC，會自動壓縮，最大 ${MAX_IMAGE_MB}MB）</div>
+          <div class="preview-16x9" id="cvPrev"></div>
+          <div class="rowbtns" style="margin-top:10px">
+            <input id="cvFile" type="file" accept="image/*,.heic,.heif" style="border:none;padding:0;width:auto">
+            <button class="px-btn slim" id="cvDel">刪除照片</button>
+          </div>
+          <input id="cvUrl" type="url" placeholder="或直接貼圖片網址" style="margin-top:8px">
+          <p class="hint" id="cvInfo"></p>
+        </div>
+        <div><div class="label">標題</div><input id="fTitle" type="text" placeholder="文章標題"></div>
+        <div><div class="label">小標 / SLOGAN</div><input id="fSlogan" type="text" placeholder="一句話的副標"></div>
+        <div class="rowbtns">
+          <div style="flex:2;min-width:180px"><div class="label">系列名稱（連載才需要，單篇留空）</div>
+            <input id="fSeries" type="text" placeholder="例：我可以是小狗" list="seriesList">
+            <datalist id="seriesList">${[...new Set(POSTS.map(seriesOf).filter(Boolean))].map(n=>`<option value="${esc(n)}">`).join("")}</datalist></div>
+          <div style="flex:1;min-width:90px"><div class="label">第幾章</div>
+            <input id="fChapter" type="text" placeholder="1"></div>
+          <div style="flex:1;min-width:110px"><div class="label">狀態</div>
+            <select id="fStatus"><option value="">不顯示</option><option value="連載中">連載中</option><option value="完結">完結</option></select></div>
+        </div>
+        <div><div class="label">標籤（用逗號或頓號分隔）</div>
+          <input id="fTags" type="text" placeholder="校園、甜文、青梅竹馬"></div>
+        <div>
+          <div class="label">配樂（YouTube、bilibili 或 mp3 網址，貼上就好，系統自動判斷）</div>
+          <input id="fMedia" type="text" placeholder="https://www.youtube.com/watch?v=… 或 https://www.bilibili.com/video/BV…">
+          <div class="rowbtns" style="margin-top:8px">
+            <input id="mp3File" type="file" accept="audio/*" style="border:none;padding:0;width:auto">
+            <span class="hint">mp3 上限 ${MAX_AUDIO_MB}MB，播完會自動重播</span>
+          </div>
+        </div>
+        <div>
+          <div class="label">內文</div>
+          <div class="toolbar">
+            <button class="px-btn slim" data-cmd="bold"><b>B</b></button>
+            <button class="px-btn slim" data-cmd="italic"><i>I</i></button>
+            <button class="px-btn slim" data-cmd="underline"><u>U</u></button>
+            <span style="width:8px"></span>
+            <button class="px-btn slim" data-blk="p">內文</button>
+            <button class="px-btn slim" data-blk="h2">標題</button>
+            <button class="px-btn slim" data-blk="blockquote">引言</button>
+            <button class="px-btn slim" data-blk="callout">引用區塊</button>
+            <button class="px-btn slim" data-blk="white">白底區塊</button>
+            <span style="width:8px"></span>
+            <button class="px-btn slim" data-cmd="insertUnorderedList">${ICON.list}清單</button>
+            <button class="px-btn slim" id="clearFmt">清除格式</button>
+          </div>
+          <div id="editor" class="rich" contenteditable="true"></div>
+          <p class="hint">選取一段文字再按「引言」「引用區塊」等按鈕，就只會套用在選到的那段；沒有選取時套用在游標所在的段落。再按一次可以還原成內文。</p>
+        </div>
+        <div class="rowbtns">
+          <button class="px-btn" id="saveBtn">發佈文章</button>
+          <button class="px-btn" id="prevBtn">預覽</button>
+          <button class="px-btn" id="expBtn">匯出 posts.json</button>
+          <button class="px-btn" id="outBtn">登出</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="px-box card">
+      <h2>我發佈的文章</h2><div class="px-rule" style="max-width:80px;margin:10px 0 18px"></div>
+      ${mine.length?`<ul class="admin-list">${mine.slice().sort((a,b)=>(b.created||0)-(a.created||0)).map(p=>`<li><span class="ttl">${esc(p.title)}${
+        p.series?`<span class="hint">　${esc(p.series)}・第 ${esc(p.chapter||"?")} 章</span>`:""}</span>
+        <button class="px-btn slim" data-go="#/post/${encodeURIComponent(p.id)}">進入</button>
+        <button class="px-btn slim" data-del="${esc(p.id)}">刪除</button></li>`).join("")}</ul>`
+      :`<p class="hint">還沒有發佈過文章。</p>`}
+      <p class="hint" style="margin-top:16px">要讓文章正式上線，按「匯出 posts.json」，把檔案放到 index.html 同一層再上傳到 GitHub。</p>
+    </section>`;
+
+  execCmd("defaultParagraphSeparator","p");
+  const ed=$("#editor");
+  if(!ed.innerHTML.trim()) ed.innerHTML="<p><br></p>";
+  wireEditor();
+  wireAdmin();
+  if(draft){ applyDraft(draft); $("#draftMsg").textContent="已載入上次的草稿"; }
+  document.querySelectorAll("[data-del]").forEach(b=>{
+    b.onclick=async()=>{
+      if(b.dataset.armed!=="1"){ b.dataset.armed="1"; b.textContent="確定刪除？"; setTimeout(()=>{b.dataset.armed="0";b.textContent="刪除";},4000); return; }
+      await deletePost(b.dataset.del); viewAdmin(); toast("已刪除");
+    };
+  });
+}
+
+/* --- 編輯器 --- */
+function execCmd(cmd,val){
+  try{ return document.execCommand ? document.execCommand(cmd,false,val===undefined?null:val) : false; }
+  catch(e){ return false; }
+}
+function topBlockOf(node){
+  const ed=$("#editor");
+  while(node&&node.parentNode!==ed) node=node.parentNode;
+  return (node&&node.parentNode===ed)? node : null;
+}
+function splitSelection(){
+  const ed=$("#editor"), sel=getSelection();
+  if(!sel.rangeCount) return null;
+  const r=sel.getRangeAt(0);
+  const top=topBlockOf(r.commonAncestorContainer);
+  if(!top||top.nodeType!==1) return null;
+  if(r.collapsed) return top;
+  if(!top.contains(r.startContainer)||!top.contains(r.endContainer)) return null;
+  const full = (r.toString().trim()===top.textContent.trim());
+  if(full) return top;
+  const post=document.createElement("p"), pre=document.createElement("p"), mid=document.createElement("p");
+  const rA=document.createRange(); rA.setStart(r.endContainer,r.endOffset); rA.setEnd(top,top.childNodes.length);
+  post.appendChild(rA.extractContents());
+  const rB=document.createRange(); rB.setStart(top,0); rB.setEnd(r.startContainer,r.startOffset);
+  pre.appendChild(rB.extractContents());
+  mid.innerHTML=top.innerHTML||"<br>";
+  if(pre.textContent.trim()||pre.querySelector("img")) top.before(pre);
+  top.after(post);
+  if(!post.textContent.trim()) post.remove();
+  top.replaceWith(mid);
+  return mid;
+}
+function applyBlock(kind){
+  const ed=$("#editor");
+  let target=splitSelection();          // 先讀選取範圍：focus() 會清掉尚未聚焦時的選取
+  if(!target){ ed.focus(); target=splitSelection()||ed.lastElementChild; }
+  if(!target) return;
+  const isBox=(kind==="callout"||kind==="white");
+  const cur=target.tagName.toLowerCase();
+  const curBox=target.classList&&(target.classList.contains("callout")?"callout":target.classList.contains("white")?"white":"");
+  let el;
+  if(isBox){
+    if(curBox===kind){ el=document.createElement("p"); el.innerHTML=target.innerHTML.replace(/<\/?p[^>]*>/g,""); }
+    else { el=document.createElement("div"); el.className=kind;
+      el.innerHTML=/^<p/i.test(target.innerHTML.trim())? target.innerHTML : `<p>${target.innerHTML||"<br>"}</p>`; }
+  }else{
+    if(cur===kind&&!curBox){ el=document.createElement("p"); el.innerHTML=target.innerHTML; }
+    else { el=document.createElement(kind); el.innerHTML=curBox? target.textContent : (target.innerHTML||"<br>"); }
+  }
+  target.replaceWith(el);
+  const r=document.createRange(); r.selectNodeContents(el); r.collapse(false);
+  const s=getSelection(); s.removeAllRanges(); s.addRange(r);
+  scheduleDraft();
+}
+function textToNodes(text){
+  const f=document.createDocumentFragment();
+  String(text).replace(/\r\n?/g,"\n").split("\n").forEach(line=>{
+    const p=document.createElement("p");
+    if(line.trim()==="") p.innerHTML="<br>"; else p.textContent=line;
+    f.appendChild(p);
+  });
+  return f;
+}
+function wireEditor(){
+  const ed=$("#editor");
+  ed.addEventListener("paste",e=>{
+    e.preventDefault();
+    const html=e.clipboardData.getData("text/html");
+    const text=e.clipboardData.getData("text/plain");
+    let frag;
+    if(html&&/<(p|div|br|h[1-6]|li)\b/i.test(html)){
+      const box=document.createElement("div"); box.innerHTML=sanitizeRich(html);
+      frag=document.createDocumentFragment(); while(box.firstChild) frag.appendChild(box.firstChild);
+    }else frag=textToNodes(text);
+    const sel=getSelection(); if(!sel.rangeCount) return;
+    const r=sel.getRangeAt(0); r.deleteContents();
+    const last=frag.lastChild; r.insertNode(frag);
+    if(last){ const nr=document.createRange(); nr.selectNodeContents(last); nr.collapse(false);
+      sel.removeAllRanges(); sel.addRange(nr); }
+    scheduleDraft();
+  });
+  ed.addEventListener("input",scheduleDraft);
+  document.querySelectorAll(".toolbar [data-cmd]").forEach(b=>{
+    b.onmousedown=e=>e.preventDefault();
+    b.onclick=()=>{ ed.focus(); execCmd(b.dataset.cmd); scheduleDraft(); };
+  });
+  document.querySelectorAll(".toolbar [data-blk]").forEach(b=>{
+    b.onmousedown=e=>e.preventDefault();
+    b.onclick=()=>applyBlock(b.dataset.blk);
+  });
+  $("#clearFmt").onmousedown=e=>e.preventDefault();
+  $("#clearFmt").onclick=()=>{ ed.focus(); execCmd("removeFormat"); applyBlock("p"); };
+}
+
+/* --- 草稿 --- */
+let draftT;
+function currentDraft(){
+  return { title:$("#fTitle").value, slogan:$("#fSlogan").value, cover:$("#cvPrev").dataset.src||"",
+    media:$("#fMedia").value, html:$("#editor").innerHTML,
+    series:$("#fSeries").value, chapter:$("#fChapter").value,
+    status:$("#fStatus").value, tags:$("#fTags").value, at:Date.now() };
+}
+function scheduleDraft(){ clearTimeout(draftT); draftT=setTimeout(saveDraft,900); }
+async function saveDraft(){
+  if(!$("#fTitle")||!$("#editor")) return;   // 已離開管理頁
+  const d=currentDraft();
+  if(!d.title&&!d.slogan&&!d.media&&!d.series&&!d.chapter&&!d.tags&&!d.cover&&$("#editor").textContent.trim()==="") return;
+  const ok=await setJSON("sese_draft",d);
+  const m=$("#draftMsg"); if(m) m.textContent=ok? "草稿已保存 "+fmtTime(d.at) : "草稿太大，存不下（圖片請縮小）";
+}
+function applyDraft(d){
+  $("#fTitle").value=d.title||""; $("#fSlogan").value=d.slogan||""; $("#fMedia").value=d.media||"";
+  $("#fSeries").value=d.series||""; $("#fChapter").value=d.chapter||"";
+  $("#fStatus").value=d.status||""; $("#fTags").value=d.tags||"";
+  if(d.cover){ $("#cvPrev").innerHTML=`<img src="${d.cover}" alt="">`; $("#cvPrev").dataset.src=d.cover; }
+  if(d.html) $("#editor").innerHTML=d.html;
+}
+
+/* --- 圖片壓縮（含 iPhone HEIC 轉檔） --- */
+function readFile(f){ return new Promise((res,rej)=>{ const r=new FileReader(); r.onload=()=>res(r.result); r.onerror=rej; r.readAsDataURL(f); }); }
+function loadImg(src){ return new Promise((res,rej)=>{ const i=new Image(); i.onload=()=>res(i); i.onerror=rej; i.src=src; }); }
+
+/* heic2any（MIT, Alex Corvi）只在遇到 HEIC 時才載入：先找同資料夾的檔案，找不到再走 CDN */
+let heicLoading=null;
+function loadHeicLib(){
+  if(window.heic2any) return Promise.resolve(true);
+  if(heicLoading) return heicLoading;
+  heicLoading=new Promise(res=>{
+    const attempt=(src,next)=>{
+      const s=document.createElement("script"); s.src=src;
+      s.onload=()=>res(!!window.heic2any); s.onerror=next;
+      document.head.appendChild(s);
+    };
+    attempt("heic2any.min.js",()=>
+      attempt("https://cdn.jsdelivr.net/npm/heic2any@0.0.4/dist/heic2any.min.js",()=>res(false)));
+  });
+  return heicLoading;
+}
+function looksHeic(f){ return /heic|heif/i.test(f.type)||/\.(heic|heif)$/i.test(f.name); }
+async function toJpegFile(file){
+  const ok=await loadHeicLib();
+  if(!ok) throw new Error("HEIC_LIB_MISSING");
+  const out=await window.heic2any({blob:file,toType:"image/jpeg",quality:0.9});
+  const blob=Array.isArray(out)?out[0]:out;
+  return new File([blob],file.name.replace(/\.\w+$/,"")+".jpg",{type:"image/jpeg"});
+}
+async function compressImage(file){
+  let f=file;
+  if(looksHeic(f)) f=await toJpegFile(f);
+  let raw,img;
+  try{
+    raw=await readFile(f); img=await loadImg(raw);
+  }catch(e){
+    if(f===file){ f=await toJpegFile(file); raw=await readFile(f); img=await loadImg(raw); }  // 副檔名沒寫但其實是 HEIC
+    else throw e;
+  }
+  const maxW=1920;
+  if(img.width<=maxW&&f.size<500*1024) return {src:raw,w:img.width,h:img.height,bytes:f.size};
+  const scale=Math.min(1,maxW/img.width);
+  const c=document.createElement("canvas");
+  c.width=Math.round(img.width*scale); c.height=Math.round(img.height*scale);
+  c.getContext("2d").drawImage(img,0,0,c.width,c.height);
+  let q=0.85, out=c.toDataURL("image/jpeg",q);
+  while(out.length>1_400_000&&q>0.5){ q-=0.1; out=c.toDataURL("image/jpeg",q); }
+  return {src:out,w:c.width,h:c.height,bytes:Math.round(out.length*0.75)};
+}
+
+/* --- 其他管理動作 --- */
+function wireAdmin(){
+  const prev=$("#cvPrev");
+  function setCover(src){ prev.innerHTML=`<img src="${src}" alt="">`; prev.dataset.src=src; scheduleDraft(); }
+  $("#cvFile").onchange=async e=>{
+    const f=e.target.files[0]; if(!f) return;
+    const info=$("#cvInfo");
+    if(f.size>MAX_IMAGE_MB*1024*1024) return toast(`圖片超過 ${MAX_IMAGE_MB}MB，請先縮小`);
+    info.textContent = looksHeic(f)
+      ? `iPhone 的 HEIC 照片，轉檔中…（第一次會多花幾秒）`
+      : `讀取中… ${f.name}（${(f.size/1024).toFixed(0)}KB・${f.type||"未知格式"}）`;
+    try{
+      const r=await compressImage(f);
+      setCover(r.src);
+      const ratio=r.w/r.h;
+      info.textContent=`已載入 ${r.w}×${r.h}，約 ${(r.bytes/1024).toFixed(0)}KB`
+        +(looksHeic(f)?"（HEIC 已轉成 JPG）":"")
+        +(Math.abs(ratio-16/9)>0.06?"（不是 16:9，會置中裁切）":"");
+    }catch(err){
+      info.textContent = String(err&&err.message)==="HEIC_LIB_MISSING"
+        ? "HEIC 轉檔工具載入失敗。請確認 heic2any.min.js 和 index.html 放在同一層，或先讓裝置連上網路再試。"
+        : `這張圖片讀不進來（${f.type||"未知格式"}），換一張 JPG 或 PNG 試試。`;
+    }
+  };
+  $("#cvUrl").oninput=e=>{ if(e.target.value.trim()) setCover(e.target.value.trim()); };
+  $("#cvDel").onclick=()=>{
+    prev.innerHTML=""; delete prev.dataset.src;
+    $("#cvUrl").value=""; $("#cvFile").value=""; $("#cvInfo").textContent="已移除封面圖，發佈時會用預設的像素底圖。";
+    scheduleDraft();
+  };
+  ["#fTitle","#fSlogan","#fMedia","#fSeries","#fChapter","#fTags"].forEach(id=>$(id).oninput=scheduleDraft);
+  $("#fStatus").onchange=scheduleDraft;
+  $("#mp3File").onchange=async e=>{
+    const f=e.target.files[0]; if(!f) return;
+    if(f.size>MAX_AUDIO_MB*1024*1024) return toast(`音檔超過 ${MAX_AUDIO_MB}MB，建議改貼網址`);
+    $("#fMedia").value=await readFile(f); toast("已載入音檔"); scheduleDraft();
+  };
+  $("#draftSave").onclick=saveDraft;
+  $("#draftClear").onclick=async()=>{ await setJSON("sese_draft",null); $("#draftMsg").textContent="草稿已清除"; };
+  $("#outBtn").onclick=async()=>{ IS_ADMIN=false; await store.set("sese_admin","0"); location.hash="#/"; toast("已登出"); };
+
+  $("#prevBtn").onclick=()=>{
+    const html=sanitizeRich($("#editor").innerHTML);
+    $("#modalIn").innerHTML=`
+      <div class="modal-bar"><b>預覽（讀者看到的樣子）</b><button class="px-btn slim" id="mClose">關閉</button></div>
+      <div class="modal-cover"><img src="${esc($("#cvPrev").dataset.src||pixelCover(4))}" alt=""></div>
+      <div class="modal-body">
+        <div class="post-head"><h1>${esc($("#fTitle").value||"（還沒有標題）")}</h1>
+          <p class="slogan">${esc($("#fSlogan").value||"")}</p></div>
+        <div class="rich" style="margin-top:26px">${html}</div>
+      </div>`;
+    $("#modal").classList.add("on");
+    $("#mClose").onclick=()=>$("#modal").classList.remove("on");
+  };
+  $("#modal").onclick=e=>{ if(e.target.id==="modal") $("#modal").classList.remove("on"); };
+
+  $("#saveBtn").onclick=async()=>{
+    const title=$("#fTitle").value.trim();
+    if(!title) return toast("還沒有填標題");
+    const html=sanitizeRich($("#editor").innerHTML);
+    if(!$("#editor").textContent.trim()) return toast("內文是空的");
+    const post={ id:"p"+Date.now(), title, slogan:$("#fSlogan").value.trim(),
+      cover:$("#cvPrev").dataset.src||pixelCover(Math.floor(Math.random()*9)),
+      media:{value:$("#fMedia").value.trim()}, html, created:Date.now(),
+      series:$("#fSeries").value.trim(), chapter:$("#fChapter").value.trim(),
+      status:$("#fStatus").value,
+      tags:$("#fTags").value.split(/[,，、\s]+/).map(t=>t.trim()).filter(Boolean) };
+    const list=await getJSON("sese_posts",[]); list.push(post);
+    await setJSON("sese_posts",list);
+    const back=await getJSON("sese_posts",[]);      // 寫入後再讀回來確認
+    if(!back.some(p=>p.id===post.id)){
+      toast(store.mode==="none"
+        ? "這個瀏覽器不允許儲存（可能是無痕模式），文章存不下來。換一般視窗再試一次。"
+        : "儲存空間不足，這篇沒存成功。把封面圖換小一點，或改用圖片網址再試一次。");
+      return;
+    }
+    clearTimeout(draftT);
+    await setJSON("sese_draft",null);
+    await loadPosts(); toast("已發佈"); location.hash="#/post/"+encodeURIComponent(post.id);
+  };
+
+  $("#expBtn").onclick=()=>{
+    const blob=new Blob([JSON.stringify(POSTS,null,2)],{type:"application/json"});
+    const a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download="posts.json"; a.click();
+    URL.revokeObjectURL(a.href); toast("posts.json 已下載");
+  };
+}
+
+/* =========================================================
+   12. 啟動
+   ========================================================= */
+(async()=>{
+  if("scrollRestoration" in history) history.scrollRestoration="manual";
+  render();                                   // 立刻畫出版面，不等儲存與網路
+  await store.init();
+  const [u,adm,lang,theme,read]=await Promise.all([   // 五個設定一次讀完，不要一個等一個
+    store.get("sese_uid"),store.get("sese_admin"),store.get("sese_lang"),
+    store.get("sese_theme"),store.get("sese_read")]);
+  MY_UID=u; if(!MY_UID){ MY_UID=uid(); store.set("sese_uid",MY_UID); }
+  IS_ADMIN=adm==="1";
+  LANG=lang==="s"?"s":"t";
+  THEME=theme||"auto"; applyTheme();
+  READ=read||"m"; document.body.dataset.read=READ;
+  await loadPosts();
+  BOOTING=false;
+  render();
+})();
+</script>
+</body>
+</html>
