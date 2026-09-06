@@ -178,7 +178,6 @@ main{max-width:1060px;margin:0 auto;padding:0 24px 140px}
 #dock .body{padding:8px}
 #dock.mini .body{display:none}
 #dock iframe{width:100%;aspect-ratio:16/9;border:0;display:block}
-#dock audio{width:100%}
 #dock .fb{font-size:.72rem;color:var(--soft);margin:6px 2px 0}
 #dock .fb a{color:var(--soft)}
 
@@ -361,7 +360,6 @@ body[data-read="l"]{--read-size:1.16rem;--read-lh:2.15}
 const ADMIN_PASSWORD = "sese247";      // ← 改成你自己的密碼
 const ADMIN_NAME     = "碎碎"; // 管理員留言時自動帶入的名字
 const MAX_IMAGE_MB   = 50;   // 可選的圖片大小上限，超過才擋（會自動壓縮）
-const MAX_AUDIO_MB   = 10;   // mp3 上限
 
 /* 留言過濾清單：想加就加一行，想放行就刪一行。繁簡、夾空白符號都擋得到 */
 const BLOCK_WORDS = [
@@ -754,12 +752,11 @@ async function loadPosts(){
 }
 
 /* =========================================================
-   6. 音樂：YouTube / bilibili / mp3
+   6. 音樂：YouTube / bilibili
    ========================================================= */
 function parseMedia(raw){
   const u=String(raw||"").trim();
   if(!u) return null;
-  if(/^data:audio\//i.test(u)||/\.(mp3|m4a|wav|ogg)(\?|$)/i.test(u)) return {kind:"audio",src:u,page:""};
   const list=(u.match(/[?&]list=([A-Za-z0-9_-]+)/)||[])[1];
   const yt=(u.match(/(?:youtube\.com\/(?:watch\?(?:[^#]*&)?v=|embed\/|shorts\/|live\/|v\/)|youtu\.be\/)([A-Za-z0-9_-]{6,})/)||[])[1]
         || (/^[A-Za-z0-9_-]{11}$/.test(u)? u : "");
@@ -773,7 +770,8 @@ function parseMedia(raw){
   const av=(u.match(/\/av(\d+)/i)||[])[1];
   if(bv) return {kind:"frame",src:`https://player.bilibili.com/player.html?bvid=${bv}&autoplay=1&high_quality=1&danmaku=0`,page:u};
   if(av) return {kind:"frame",src:`https://player.bilibili.com/player.html?aid=${av}&autoplay=1&high_quality=1&danmaku=0`,page:u};
-  if(/^https?:\/\//i.test(u)) return {kind:"audio",src:u,page:u};
+  if(/^https?:\/\//i.test(u)) return {kind:"note",src:"",page:u,
+    msg:"目前只支援 YouTube 和 bilibili 的影片連結。"};
   return null;
 }
 const dock={
@@ -794,10 +792,6 @@ const dock={
         <a href="${esc(m.page)}" target="_blank" rel="noopener">在原網站開啟</a></p>`;
       if(location.protocol==="file:")
         toast("直接開啟檔案時 YouTube 會擋掉播放，上傳到網站後就正常了");
-    }else{
-      body.innerHTML=`<audio controls loop playsinline preload="auto" src="${esc(m.src)}"></audio>`;
-      const a=body.querySelector("audio"); const pr=a.play();
-      if(pr&&pr.catch) pr.catch(()=>toast("手機需要你再按一次播放鍵"));
     }
     this.el.classList.add("on"); this.el.classList.remove("mini"); syncChev();
   },
@@ -1272,12 +1266,9 @@ async function viewAdmin(){
         <div><div class="label">標籤（用逗號或頓號分隔）</div>
           <input id="fTags" type="text" placeholder="校園、甜文、青梅竹馬"></div>
         <div>
-          <div class="label">配樂（YouTube、bilibili 或 mp3 網址，貼上就好，系統自動判斷）</div>
+          <div class="label">配樂（貼上 YouTube 或 bilibili 網址）</div>
           <input id="fMedia" type="text" placeholder="https://www.youtube.com/watch?v=… 或 https://www.bilibili.com/video/BV…">
-          <div class="rowbtns" style="margin-top:8px">
-            <input id="mp3File" type="file" accept="audio/*" style="border:none;padding:0;width:auto">
-            <span class="hint">mp3 上限 ${MAX_AUDIO_MB}MB，播完會自動重播</span>
-          </div>
+          <p class="hint">影片和播放清單都可以，播完會自動重播。</p>
         </div>
         <div>
           <div class="label">內文</div>
@@ -1530,11 +1521,6 @@ function wireAdmin(){
   };
   ["#fTitle","#fSlogan","#fMedia","#fSeries","#fChapter","#fTags"].forEach(id=>$(id).oninput=scheduleDraft);
   $("#fStatus").onchange=scheduleDraft;
-  $("#mp3File").onchange=async e=>{
-    const f=e.target.files[0]; if(!f) return;
-    if(f.size>MAX_AUDIO_MB*1024*1024) return toast(`音檔超過 ${MAX_AUDIO_MB}MB，建議改貼網址`);
-    $("#fMedia").value=await readFile(f); toast("已載入音檔"); scheduleDraft();
-  };
   $("#draftSave").onclick=saveDraft;
   $("#draftClear").onclick=async()=>{ await setJSON("sese_draft",null); $("#draftMsg").textContent="草稿已清除"; };
   $("#outBtn").onclick=async()=>{ IS_ADMIN=false; await store.set("sese_admin","0"); location.hash="#/"; toast("已登出"); };
